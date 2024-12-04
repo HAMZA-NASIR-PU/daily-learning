@@ -25,5 +25,92 @@ public class AuthorizationFilter extends GenericFilterBean{}
 </div>
 ```
 
+## Referential Equality in React
+
+Referential equality refers to whether two variables reference the exact same object or array in memory. In JavaScript (and React), objects and arrays are compared by reference, not by their content. This behavior directly impacts React's rendering process, as it determines if components should re-render based on changes in props or state.
+
+Two objects or arrays are considered referentially equal if they point to the same memory location. If a new object or array is created (even with identical content), it is not referentially equal to the previous one.
+
+React uses referential equality to decide if a component should re-render:
+
+- If a parent passes a new object or array to a child (even if it looks the same), the child re-renders because React sees the prop as "different."
+- This is why memoizing objects/arrays or their derived values with hooks like useMemo is critical for optimization.
+
+### Without Referential Equality
+
+```javascript
+function ParentComponent() {
+  const [count, setCount] = React.useState(0);
+
+  // New object created on every render
+  const settings = { theme: "dark" };
+
+  return (
+    <div>
+      <ChildComponent settings={settings} />
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+function ChildComponent({ settings }) {
+  console.log("ChildComponent Rendered");
+  return <p>Theme: {settings.theme}</p>;
+}
+```
+
+Every time the parent re-renders, the settings object is recreated, so ChildComponent re-renders—even though the settings content hasn't changed.
+
+In the code example, `ChildComponent` re-renders because the settings object is being re-created on every render of `ParentComponent`. This happens even though the content of settings (i.e., { theme: "dark" }) does not change.
+
+#### New Object on Every Render
+In JavaScript, objects are compared by reference, not by value. When ParentComponent renders, the settings object is re-created as a new object in memory every time, even if its contents are the same. This causes React to detect a new prop for ChildComponent, triggering its re-render.
+
+#### React's Behavior
+React does a shallow comparison of props when deciding whether to re-render a child component. Since the reference to the settings object has changed, React assumes the prop has changed, and thus ChildComponent re-renders.
+
+### Fixing with Referential Equality
+
+To prevent ChildComponent from re-rendering unnecessarily, you can use the useMemo hook to memoize the settings object:
+
+```javascript
+function ParentComponent() {
+  const [count, setCount] = React.useState(0);
+
+  // Memoize the settings object
+  const settings = React.useMemo(() => ({ theme: "dark" }), []);
+
+  return (
+    <div>
+      <ChildComponent settings={settings} />
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+#### Alternate Solution
+
+You can also use React.memo to prevent ChildComponent from re-rendering if its props haven’t changed:
+
+```javascript
+const ChildComponent = React.memo(function ChildComponent({ settings }) {
+  console.log("ChildComponent Rendered");
+  return <p>Theme: {settings.theme}</p>;
+});
+```
+
+This approach works because `React.memo` wraps the component and ensures it only re-renders if its props have changed. However, without `useMemo`, `React.memo` would still detect a change in settings due to the new object reference.
+
+### Where Referential Equality Matters
+- Props: Passing new object/array references causes children to re-render.
+- Context: Context value updates trigger re-renders in all consumers unless memoized.
+- Dependencies in Hooks: Incorrectly referencing objects/arrays in dependency arrays can lead to unintended effects.
+
+### Key Points
+- Primitives (e.g., strings, numbers): Compared by value. No issue with referential equality.
+- Objects/Arrays: Compared by reference. Can trigger unnecessary re-renders if not memoized.
+- Use tools like React.memo, useMemo, and useCallback to maintain referential equality and
+
+
 
 
