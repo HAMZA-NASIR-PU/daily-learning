@@ -25,6 +25,11 @@ public class AuthorizationFilter extends GenericFilterBean{}
 </div>
 ```
 
+## Bridge Adapter in Virtualbox
+
+A `bridge adapter` in VirtualBox refers to a network configuration that directly connects a `virtual machine's` network adapter to the `host computer's` physical network adapter, essentially allowing the virtual machine to act like a separate physical device on the same network, receiving an IP address from the same DHCP server as other devices on the local network; essentially making the virtual machine appear as a "real" device on the network. 
+
+
 ## Referential Equality in React
 
 Referential equality refers to whether two variables reference the exact same object or array in memory. In JavaScript (and React), objects and arrays are compared by reference, not by their content. This behavior directly impacts React's rendering process, as it determines if components should re-render based on changes in props or state.
