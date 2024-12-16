@@ -137,3 +137,8 @@ ConcurrentHashMap is a thread-safe implementation of the Map interface in Java, 
 
 One of the key features of the ConcurrentHashMap is that it provides fine-grained locking, meaning that it locks only the portion of the map being modified, rather than the entire map. This makes it highly scalable and efficient for concurrent operations. Additionally, the ConcurrentHashMap provides various methods for atomic operations such as putIfAbsent(), replace(), and remove().
 
+## Advanced Hibernate Mappings
+
+### 1. One-to-One Unidirectional
+
+
