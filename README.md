@@ -285,9 +285,6 @@ public class UserService {
 ```
 
 ## Marker Interface and Annotation in Java
-
-`https://medium.com/@ByteCodeBlogger/tag-youre-it-exploring-the-functionality-of-marker-interfaces-in-java-5feb0e060ff5#:~:text=Marker%20interfaces%20and%20annotations%20serve,integrate%20with%20the%20type%20system.`
-
 A marker interface in Java is an interface that doesn’t declare any methods or fields. So then why do we need it? Can’t they be replaced by Annotations?
 
 `The concept of a marker interface in Java has historically been useful. Marker interfaces were more common in earlier Java versions. They provided a simple way to signal to the compiler or runtime that a class had a specific property. Classic examples include `Serializable` and `Cloneable`.`
