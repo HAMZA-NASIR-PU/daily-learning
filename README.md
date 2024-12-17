@@ -139,7 +139,150 @@ One of the key features of the ConcurrentHashMap is that it provides fine-graine
 
 ## Advanced Hibernate Mappings
 
-### 1. One-to-One Unidirectional
+### 1. One-to-One Unidirectional and One-to-One Bidirectional
+
+This example demonstrates a relationship between two entities: `User` and `UserProfile`
+
+```java
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String username;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+        userProfile.setUser(this); // For bidirectional relationship
+    }
+}
+```
+
+```java
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "user_profiles")
+public class UserProfile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String address;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+}
+```
+
+```java
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Service
+public class UserService {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Transactional
+    public void createUserWithProfile() {
+        // Create a new User
+        User user = new User();
+        user.setUsername("john_doe");
+
+        // Create a new UserProfile
+        UserProfile profile = new UserProfile();
+        profile.setAddress("123 Main Street");
+
+        // Set bi-directional relationship
+        user.setUserProfile(profile);
+
+        // Persist User (UserProfile will be cascaded)
+        entityManager.persist(user);
+
+        System.out.println("User and UserProfile saved to the database!");
+    }
+
+    public void fetchUserWithProfile() {
+        // Fetch User by ID
+        User user = entityManager.find(User.class, 1L);
+
+        if (user != null) {
+            System.out.println("User ID: " + user.getId());
+            System.out.println("Username: " + user.getUsername());
+
+            UserProfile profile = user.getUserProfile();
+            if (profile != null) {
+                System.out.println("Profile ID: " + profile.getId());
+                System.out.println("Address: " + profile.getAddress());
+            }
+        } else {
+            System.out.println("User not found!");
+        }
+    }
+}
+```
 
 ## Non-Null Assertion Operator in Typescript
 
