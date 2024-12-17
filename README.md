@@ -284,6 +284,84 @@ public class UserService {
 }
 ```
 
+## Marker Interface and Annotation in Java
+
+`https://medium.com/@ByteCodeBlogger/tag-youre-it-exploring-the-functionality-of-marker-interfaces-in-java-5feb0e060ff5#:~:text=Marker%20interfaces%20and%20annotations%20serve,integrate%20with%20the%20type%20system.`
+
+A marker interface in Java is an interface that doesn’t declare any methods or fields. So then why do we need it? Can’t they be replaced by Annotations?
+
+`The concept of a marker interface in Java has historically been useful. Marker interfaces were more common in earlier Java versions. They provided a simple way to signal to the compiler or runtime that a class had a specific property. Classic examples include `Serializable` and `Cloneable`.`
+
+### How to Recognize a Marker Interface :
+- No Methods or Fields: Marker interfaces don’t contain any methods or fields. They’re just used to signal or mark something.
+- Type Tagging: They are used to provide metadata about the class that implements them. For example, they can be used to indicate that a class should be treated in a special way by the framework or runtime.
+- Checked by Frameworks: Frameworks or libraries check if a class implements a marker interface to apply specific logic or behavior.
+
+### Real Life Example from a Developer POV—
+
+Custom Marker Interface:
+
+Imagine you’re developing a Java application where certain classes should be processed differently based on some criteria. For example, you might want to perform a special type of logging for classes that implement a particular marker interface.
+
+```java
+// Marker Interface
+public interface Loggable {
+}
+
+// Classes that implement the marker interface
+public class User implements Loggable {
+    private String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{username='" + username + "'}";
+    }
+}
+
+public class Product {
+    private String productName;
+
+    public Product(String productName) {
+        this.productName = productName;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{productName='" + productName + "'}";
+    }
+}
+
+// Logging Utility
+public class Logger {
+    public static void log(Object obj) {
+        if (obj instanceof Loggable) {
+            System.out.println("Logging: " + obj);
+        } else {
+            System.out.println("Not Loggable: " + obj);
+        }
+    }
+
+    public static void main(String[] args) {
+        User user = new User("Alice");
+        Product product = new Product("Laptop");
+
+        log(user);     // Should print "Logging: User{username='Alice'}"
+        log(product);  // Should print "Not Loggable: Product{productName='Laptop'}"
+    }
+}
+```
+
+In this example:
+- `Loggable` is a marker interface.
+- `User` implements `Loggable`, while `Product` does not.
+- The `Logger` utility class checks if an object is an instance of `Loggable` and logs it accordingly.
+
+
+
 ## Non-Null Assertion Operator in Typescript
 
 In typescript, the ! operator after an expression tells the compiler that you are certain the value is not null or undefined. This is useful when working with elements like `document.getElementById()` because typescript returns a type of `HTMLElement | null`, meaning the element may or may not exist in DOM.
