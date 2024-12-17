@@ -141,4 +141,13 @@ One of the key features of the ConcurrentHashMap is that it provides fine-graine
 
 ### 1. One-to-One Unidirectional
 
+## Non-Null Assertion Operator in Typescript
+
+In typescript, the ! operator after an expression tells the compiler that you are certain the value is not null or undefined. This is useful when working with elements like `document.getElementById()` because typescript returns a type of `HTMLElement | null`, meaning the element may or may not exist in DOM.
+
+```typescript
+document.getElementById('someId')!.style.display = 'none';
+```
+
+Here, you're asserting to TypeScript that the element with ID `someId` definitely exists (i.e., it is not null) and therefore, you can safely access its properties such as style.
 
