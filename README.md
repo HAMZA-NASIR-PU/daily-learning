@@ -1,4 +1,4 @@
-# daily-learning
+# Daily Learning Sheet
 
 
 ## Spring Security
@@ -369,3 +369,63 @@ document.getElementById('someId')!.style.display = 'none';
 
 Here, you're asserting to TypeScript that the element with ID `someId` definitely exists (i.e., it is not null) and therefore, you can safely access its properties such as style.
 
+## TypedQuery in Spring Data JPA
+
+`TypedQuery` is part of the `Jakarta Persistence (JPA)` API. It allows developers to write type-safe queries when interacting with the database. Unlike `Query`, which works with raw types, `TypedQuery` helps prevent potential `ClassCastException` by enforcing type-safety at compile time.
+
+```java
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Employee {
+    @Id
+    private Long id;
+    private String name;
+    private String department;
+
+    // Getters and Setters
+}
+```
+
+```java
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
+import java.util.List;
+
+public class TypedQueryExample {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            // Start a transaction
+            em.getTransaction().begin();
+
+            // JPQL query with TypedQuery
+            String jpql = "SELECT e FROM Employee e WHERE e.department = :department";
+            TypedQuery<Employee> query = em.createQuery(jpql, Employee.class);
+
+            // Set the parameter
+            query.setParameter("department", "IT");
+
+            // Execute the query and get the result list
+            List<Employee> employees = query.getResultList();
+
+            for (Employee emp : employees) {
+                System.out.println("Employee Name: " + emp.getName());
+            }
+
+            // Commit the transaction
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+            emf.close();
+        }
+    }
+}
+```
+
+ Use `setMaxResults()` and `setFirstResult()` for pagination.
