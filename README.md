@@ -429,3 +429,5 @@ public class TypedQueryExample {
 ```
 
  Use `setMaxResults()` and `setFirstResult()` for pagination.
+
+ ## java.sql.SQLIntegrityConstraintViolationException is a checked exception.
