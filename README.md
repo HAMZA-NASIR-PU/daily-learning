@@ -431,3 +431,7 @@ public class TypedQueryExample {
  Use `setMaxResults()` and `setFirstResult()` for pagination.
 
  ## java.sql.SQLIntegrityConstraintViolationException is a checked exception.
+
+## How does `orphanRrmoval` work with JPA and Hibernate ?
+
+https://vladmihalcea.com/orphanremoval-jpa-hibernate/
