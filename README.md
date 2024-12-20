@@ -435,3 +435,11 @@ public class TypedQueryExample {
 ## How does `orphanRrmoval` work with JPA and Hibernate ?
 
 https://vladmihalcea.com/orphanremoval-jpa-hibernate/
+
+## How to temporairly disable foreign key constraint in MYSQL
+
+```sql
+SET FOREIGN_KEY_CHECKS = 0;
+-- DO YOUR STUFF
+SET FOREIGN_KEY_CHECKS=1;
+```
