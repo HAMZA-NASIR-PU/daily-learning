@@ -448,3 +448,48 @@ SET FOREIGN_KEY_CHECKS=1;
 
 DATE_ADD() and DATE_SUB() are not supported by JPQL.
 
+## Curse of Dimensionality in Machine Learning
+
+## One-Hot Encoding and Label Encoding in Machine Learning
+
+One-hot encoding and label encoding are techniques used to convert categorical data into numerical form, which is necessary for most machine learning algorithms:
+
+1. **Label Encoding**:
+   - This method assigns a unique integer to each category in a categorical feature.
+   - For example, if you have a feature "Color" with categories "Red," "Green," and "Blue," label encoding might assign 0 to "Red," 1 to "Green," and 2 to "Blue."
+   - It's simple and efficient, but the numerical ordering can unintentionally imply a priority or ranking which doesn't inherently exist in the actual categories.
+
+2. **One-Hot Encoding**:
+   - This method converts each category into a new binary column with values 0 or 1 for each category.
+   - Using the same "Color" example, with one-hot encoding, you would create three binary columns: "Is_Red," "Is_Green," and "Is_Blue." A row with "Red" would be represented as (1, 0, 0), "Green" as (0, 1, 0), and "Blue" as (0, 0, 1).
+   - This avoids the issue of implied order from label encoding but can increase the dimensionality of the data, especially if there are many categories.
+
+## Interview Questions related to Machine Learning
+
+Interview questions around one-hot encoding and label encoding typically assess your understanding of these techniques, their applications, and their limitations. Here are some common questions you might encounter:
+
+1. **Explain One-Hot Encoding and Label Encoding.**  
+   - Can you describe each method and explain when you would use one over the other?
+
+2. **What are the limitations of Label Encoding?**  
+   - Why might label encoding not be suitable for certain types of data?
+
+3. **Why could One-Hot Encoding lead to a "curse of dimensionality"?**  
+   - How does the number of categories in a feature affect the dimensionality of your dataset after one-hot encoding?
+
+4. **How would you handle a dataset with a large number of categorical features using One-Hot Encoding?**  
+   - Discuss strategies to manage or reduce the dimensionality effectively.
+
+5. **Can you give examples of machine learning algorithms that might be sensitive to encoded categories?**  
+   - Discuss how algorithms like decision trees or neural networks handle one-hot encoded data differently from linear models like logistic regression.
+
+6. **What impact does encoding have on model performance?**  
+   - How do different encoding techniques affect the performance and accuracy of your model?
+
+7. **How do you deal with unseen categories in test data when using encoding?**  
+   - Describe strategies to handle categories in test data that were not present during training.
+
+8. **How do you implement One-Hot Encoding and Label Encoding using libraries like scikit-learn?**  
+   - Explain or demonstrate coding examples for applying these encoding techniques.
+
+
