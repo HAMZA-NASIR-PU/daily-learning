@@ -493,3 +493,17 @@ Interview questions around one-hot encoding and label encoding typically assess 
    - Explain or demonstrate coding examples for applying these encoding techniques.
 
 
+## Default Time zone in Spring Boot
+
+
+The default timezone in Spring Boot is the system's default timezone, which is typically the one configured on the underlying operating system. This means Spring Boot will use the timezone set in the JVM when the application starts.
+
+If you want to explicitly set the timezone for your Spring Boot application, you can configure it in the application.properties or application.yml file:
+
+For example, in application.properties:
+```java
+spring.jackson.time-zone=UTC
+```
+
+This will ensure that the application works with the specified timezone.
+
