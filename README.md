@@ -591,6 +591,129 @@ public class TestController {
 ]
 ```
 
+## ObjectMapper in Jackson Explained
+
+`ObjectMapper` is a core class in the Jackson library that provides functionality for converting Java objects to JSON (serialization) and converting JSON to Java objects (deserialization). It is part of the `com.fasterxml.jackson.databind` package and is commonly used in Java applications to work with JSON data.
+
+### Key Features of `ObjectMapper`:
+
+1. **Serialization (Java to JSON)**:
+   - `ObjectMapper` can convert Java objects into JSON representations. It handles a wide variety of Java types, including primitive types, collections, `Date`, and `java.time` types.
+   - Example:
+     ```java
+     ObjectMapper objectMapper = new ObjectMapper();
+     MyClass obj = new MyClass("John", 25);
+     String json = objectMapper.writeValueAsString(obj);
+     System.out.println(json); // Output: {"name":"John","age":25}
+     ```
+
+2. **Deserialization (JSON to Java)**:
+   - `ObjectMapper` can also convert JSON strings into Java objects. The class maps the JSON properties to Java fields based on the names and data types.
+   - Example:
+     ```java
+     String json = "{\"name\":\"John\",\"age\":25}";
+     MyClass obj = objectMapper.readValue(json, MyClass.class);
+     System.out.println(obj.getName()); // Output: John
+     ```
+
+3. **Customizing JSON Processing**:
+   - You can customize the serialization and deserialization behavior by using annotations like `@JsonProperty`, `@JsonFormat`, `@JsonIgnore`, and others.
+   - Example with `@JsonFormat` for custom date formatting:
+     ```java
+     @JsonFormat(pattern = "yyyy-MM-dd")
+     private LocalDate birthDate;
+     ```
+
+4. **Handling Complex Types**:
+   - `ObjectMapper` can handle complex types, including nested objects, collections, and generics, by serializing and deserializing them as JSON arrays or objects.
+   - Example with a list of objects:
+     ```java
+     List<MyClass> list = Arrays.asList(new MyClass("John", 25), new MyClass("Jane", 30));
+     String json = objectMapper.writeValueAsString(list);
+     System.out.println(json); // Output: [{"name":"John","age":25}, {"name":"Jane","age":30}]
+     ```
+
+5. **Handling JSON in Different Formats**:
+   - `ObjectMapper` can read and write JSON in different formats, including:
+     - String-based JSON.
+     - Input and Output Streams (useful for reading/writing from files).
+     - Files (using `readValue()` and `writeValue()` methods).
+     - For handling other formats, you can use `ObjectMapper` with modules like `jackson-dataformat-xml` for XML, `jackson-dataformat-csv` for CSV, etc.
+
+6. **Configuring ObjectMapper**:
+   - You can configure `ObjectMapper` globally with various settings, such as enabling/disabling certain features, handling missing properties, or changing the serialization behavior.
+   - Example to enable pretty-printing:
+     ```java
+     ObjectMapper objectMapper = new ObjectMapper();
+     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+     ```
+
+7. **Jackson Modules**:
+   - Jackson modules like `jackson-datatype-jsr310` allow you to handle Java 8 Date/Time API types such as `Instant`, `LocalDateTime`, and `ZonedDateTime`. You need to register these modules with `ObjectMapper` for them to be recognized.
+
+   Example:
+   ```java
+   ObjectMapper objectMapper = new ObjectMapper();
+   objectMapper.registerModule(new JavaTimeModule());
+   ```
+
+### Example of `ObjectMapper` Usage:
+
+**Serialization (Java to JSON):**
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        MyClass obj = new MyClass("John", 25);
+        
+        // Serialize to JSON
+        String json = objectMapper.writeValueAsString(obj);
+        System.out.println(json);  // {"name":"John","age":25}
+    }
+}
+
+class MyClass {
+    private String name;
+    private int age;
+
+    // Constructor, getters, setters...
+}
+```
+
+**Deserialization (JSON to Java):**
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = "{\"name\":\"John\",\"age\":25}";
+        
+        // Deserialize from JSON
+        MyClass obj = objectMapper.readValue(json, MyClass.class);
+        System.out.println(obj.getName());  // John
+    }
+}
+
+class MyClass {
+    private String name;
+    private int age;
+
+    // Constructor, getters, setters...
+}
+```
+
+### Common Methods of `ObjectMapper`:
+- `writeValueAsString(Object value)` – Converts a Java object to JSON as a String.
+- `writeValue(File resultFile, Object value)` – Writes a Java object as JSON to a file.
+- `readValue(String content, Class<T> valueType)` – Converts JSON String into a Java object.
+- `readValue(InputStream src, Class<T> valueType)` – Converts JSON from an InputStream into a Java object.
+
+### Summary:
+`ObjectMapper` is the main class in Jackson used to convert between Java objects and JSON. It provides powerful features for handling JSON data, with support for customization and flexibility, making it an essential tool for working with JSON in Java.
+
 
 
 
