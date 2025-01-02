@@ -507,3 +507,90 @@ spring.jackson.time-zone=UTC
 
 This will ensure that the application works with the specified timezone.
 
+## JsonFormat annotation usage in spring boot.
+
+
+```java
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.sql.Timestamp;
+
+public class TestDTO {
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // Define the date format
+    private Timestamp timestamp;
+
+    // Constructor to set the timestamp
+    public TestDTO(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    // Getter and setter methods
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Timestamp getTimestamp() {
+        return this.timestamp;
+    }
+}
+```
+
+```java
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class TestController {
+
+    @GetMapping("/test")
+    public List<TestDTO> generateTimestamps() {
+        List<TestDTO> timestamps = new ArrayList<>();
+
+        // Current date (today) and end date (e.g., 30th January 2025)
+        LocalDate startDate = LocalDate.now();  
+        LocalDate endDate = LocalDate.of(2025, Month.JANUARY, 30);
+
+        // Loop through each day between the start and end dates
+        for (LocalDate date = startDate; !date.isAfter(endDate); date = date.plusDays(1)) {
+            // Set the time to 00:00:00 for each date
+            LocalDateTime dateTime = date.atStartOfDay();
+            timestamps.add(new TestDTO(Timestamp.valueOf(dateTime))); // Add each timestamp to the list
+        }
+
+        return timestamps;  // Return the list of timestamps
+    }
+}
+```
+
+### Output
+
+```json
+[
+    {
+        "timestamp": "2024-12-29 00:00:00"
+    },
+    {
+        "timestamp": "2024-12-30 00:00:00"
+    },
+    {
+        "timestamp": "2024-12-31 00:00:00"
+    },
+    {
+        "timestamp": "2025-01-01 00:00:00"
+    },
+    {
+        "timestamp": "2025-01-02 00:00:00"
+    }
+    // ... more timestamps till January 30, 2025
+]
+```
+
+
+
+
