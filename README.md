@@ -780,3 +780,9 @@ public class UserService {
 
 In this scenario, Hibernate will attempt to parse and execute the JPQL query `String hql = "SELECT u FROM User u WHERE u.usernamee = :username";`. Since there is no field `usernamee` in the `User` entity, Hibernate will throw a `SemanticException` indicating that the path expression is invalid.
 
+### Interview Questions
+1. What is a SemanticException in the context of Hibernate, and why is it raised in this case?
+2. How would you modify the query to prevent this exception?
+3. What steps would you take to debug and resolve a SemanticException if encountered in a different, more complex query?
+
+
