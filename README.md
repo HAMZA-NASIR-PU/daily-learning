@@ -714,6 +714,69 @@ class MyClass {
 ### Summary:
 `ObjectMapper` is the main class in Jackson used to convert between Java objects and JSON. It provides powerful features for handling JSON data, with support for customization and flexibility, making it an essential tool for working with JSON in Java.
 
+## SemanticException of Hibernate (ORM)
 
+Typically, Hibernate throws `SemanticException` to signal an error in the semantics of `HQL/JPQL` queries. Unlike `QuerySyntaxException` which indicates a syntax error, `SemanticException` denotes that Hibernate doesn’t understand the meaning of a given query.
 
+There are various scenarios that can result in a `SemanticException` in Hibernate. One such way is by creating a valid entity but using an incorrect field path in the query. Here’s how you can do it:
+
+### Scenario: Invalid Field Path
+
+This occurs when you reference a field in your JPQL query that doesn't exist on the entity.
+
+#### Step 1: Define an Entity
+
+```java
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String username;
+
+    // Getters and setters
+}
+```
+
+#### Step 2: Create a Repository
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    // No changes needed here
+}
+```
+
+#### Step 3: Define a Service Layer with an Invalid Query
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+@Service
+public class UserService {
+    @Autowired
+    private EntityManager entityManager;
+
+    public void executeFaultyQuery() {
+        // Intentionally incorrect field 'usernamee' instead of 'username'
+        String hql = "SELECT u FROM User u WHERE u.usernamee = :username";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("username", "test");
+        query.getResultList(); // This will trigger the SemanticException
+    }
+}
+```
+
+### Explanation
+
+In this scenario, Hibernate will attempt to parse and execute the JPQL query `String hql = "SELECT u FROM User u WHERE u.usernamee = :username";`. Since there is no field `usernamee` in the `User` entity, Hibernate will throw a `SemanticException` indicating that the path expression is invalid.
 
