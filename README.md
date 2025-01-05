@@ -785,4 +785,6 @@ In this scenario, Hibernate will attempt to parse and execute the JPQL query `St
 2. How would you modify the query to prevent this exception?
 3. What steps would you take to debug and resolve a SemanticException if encountered in a different, more complex query?
 
+## Segmented Trees Leetcode Question: 2080. Range Frequency Queries
+
 
