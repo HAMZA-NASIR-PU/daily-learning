@@ -829,5 +829,15 @@ In Spring Boot, the embedded server (like Tomcat, Jetty, or Undertow) is automat
 ## `mvn dependency:tree`
 
 ## AWS EKS (Elastic Kubernetes Service)
+b
+## `System.getProperty` in java
 
+```java
+  String classpath = System.getProperty("java.class.path");
+	System.out.println("Full Classpath:");
+	// Print each classpath entry (they are separated by the system-specific path separator)
+  for (String path : classpath.split(System.getProperty("path.separator"))) {
+    System.out.println(path);
+}
+```
 
