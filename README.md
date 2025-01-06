@@ -828,5 +828,6 @@ In Spring Boot, the embedded server (like Tomcat, Jetty, or Undertow) is automat
 
 ## `mvn dependency:tree`
 
+## AWS EKS (Elastic Kubernetes Service)
 
 
