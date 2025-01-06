@@ -796,3 +796,24 @@ Dapr (Distributed Application Runtime) is a free and open source runtime system 
 This goal outputs a classpath string of dependencies from the local repository to a file or log.
 
 The `mvn dependency:build-classpath` command only lists the dependencies (JAR files) that are part of the build classpath, which is used during the compilation and runtime of your Java application. However, this command does not list non-JAR files like `application.properties`, which is typically part of your project resources.
+
+## Crucial points related to META-INF/MANIFEST.MF created by spring boot in the jar executable zip file.
+
+```java
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 21
+Implementation-Title: main-app
+Implementation-Version: 0.0.1-SNAPSHOT
+Main-Class: org.springframework.boot.loader.launch.JarLauncher
+Start-Class: com.school.portal.MainApplication
+Spring-Boot-Version: 3.2.1
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
+Spring-Boot-Layers-Index: BOOT-INF/layers.idx
+```
+
+The `Launcher` class is a special bootstrap class that is used as an executable jar’s main entry point. It is the actual `Main-Class` in your jar file, and it is used to setup an appropriate `ClassLoader` and ultimately call your `main()` method.
+
+https://docs.spring.io/spring-boot/specification/executable-jar/launching.html#:~:text=The%20Launcher%20class%20is%20a,call%20your%20main()%20method.
