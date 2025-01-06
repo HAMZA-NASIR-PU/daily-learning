@@ -826,7 +826,7 @@ https://docs.spring.io/spring-boot/specification/executable-jar/launching.html#:
 
 In Spring Boot, the embedded server (like Tomcat, Jetty, or Undertow) is automatically included as part of the application when you create a Spring Boot project. The fact that it's not explicitly mentioned in the MANIFEST.MF file doesn't prevent Spring Boot from recognizing and using it. When you add a Spring Boot starter dependency for web applications, such as `spring-boot-starter-web`, it automatically includes the embedded Tomcat server (by default).
 
-
+## `mvn dependency:tree`
 
 
 
