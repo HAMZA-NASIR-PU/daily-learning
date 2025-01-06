@@ -790,3 +790,7 @@ In this scenario, Hibernate will attempt to parse and execute the JPQL query `St
 ## Dapr (Distributed Application Runtime)
 
 Dapr (Distributed Application Runtime) is a free and open source runtime system designed to support cloud native and serverless computing. sIts initial release supported SDKs and APIs for Java, .NET, Python, and Go, and targeted the Kubernetes cloud deployment system.
+
+## Maven `build-classpath` goal of `dependency` plugin
+
+This goal outputs a classpath string of dependencies from the local repository to a file or log.
