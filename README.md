@@ -787,4 +787,6 @@ In this scenario, Hibernate will attempt to parse and execute the JPQL query `St
 
 ## Segmented Trees Leetcode Question: 2080. Range Frequency Queries
 
+## Dapr (Distributed Application Runtime)
 
+Dapr (Distributed Application Runtime) is a free and open source runtime system designed to support cloud native and serverless computing. sIts initial release supported SDKs and APIs for Java, .NET, Python, and Go, and targeted the Kubernetes cloud deployment system.
