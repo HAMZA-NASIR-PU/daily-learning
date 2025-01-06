@@ -842,3 +842,7 @@ b
 ```
 
 ## `mvn spring-boot:run --debug`
+
+## What is an `uber` or a `fat` JAR ?
+
+An `uber jar` and a `fat jar` are essentially the same thing, both referring to a Java archive (JAR) file that includes not only the application code but also all of its necessary dependencies, allowing it to run independently without requiring separate library installations; in simpler terms, it's a self-contained executable JAR file where everything needed to run the application is bundled together.
