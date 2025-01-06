@@ -794,3 +794,5 @@ Dapr (Distributed Application Runtime) is a free and open source runtime system 
 ## Maven `build-classpath` goal of `dependency` plugin
 
 This goal outputs a classpath string of dependencies from the local repository to a file or log.
+
+The `mvn dependency:build-classpath` command only lists the dependencies (JAR files) that are part of the build classpath, which is used during the compilation and runtime of your Java application. However, this command does not list non-JAR files like `application.properties`, which is typically part of your project resources.
