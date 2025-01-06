@@ -817,3 +817,8 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 The `Launcher` class is a special bootstrap class that is used as an executable jar’s main entry point. It is the actual `Main-Class` in your jar file, and it is used to setup an appropriate `ClassLoader` and ultimately call your `main()` method.
 
 https://docs.spring.io/spring-boot/specification/executable-jar/launching.html#:~:text=The%20Launcher%20class%20is%20a,call%20your%20main()%20method.
+
+## List the contents of JAR file
+
+`jar tf myapp.jar`
+
