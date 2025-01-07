@@ -870,3 +870,8 @@ Byte Buddy is a modern, powerful library for creating and modifying Java classes
 ## Difference between web server and application server
 
 The key difference between a web server and an application server lies in their functionality and scope of services. A web server, like Tomcat, is primarily responsible for handling HTTP requests, serving static content (such as HTML, CSS, and JavaScript), and processing dynamic content like servlets and JSPs. It focuses on the basic task of delivering web pages to users. In contrast, an application server, such as WildFly, offers a broader set of features beyond web page serving. It provides an environment for running enterprise applications, handling business logic, transaction management, messaging, and more, by supporting the full Java EE (Jakarta EE) stack, including EJB (Enterprise JavaBeans), JMS (Java Message Service), and JPA (Java Persistence API). While both can serve web content, an application server is designed to manage complex, enterprise-level applications, making it more suited for handling larger, more intricate systems.
+
+## Where, SQLDelete, Loader annotation in Hibernate
+
+
+
