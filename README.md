@@ -849,3 +849,21 @@ An `uber jar` and a `fat jar` are essentially the same thing, both referring to 
 
 ## Nested Classes in Java
 
+## Byte Buddy (JAVA Byte Code generation and manipulation library)
+
+Byte Buddy is a modern, powerful library for creating and modifying Java classes at the bytecode level. It abstracts the complexity of bytecode manipulation, allowing developers to dynamically create, alter, or enhance classes without needing to write or understand bytecode directly. Here's how Byte Buddy operates:
+
+### Key Features
+
+- Dynamic class creation: You can generate classes at runtime based on interfaces or existing classes.
+- Method delegation/interception: It allows you to intercept method calls and delegate them to another method, an external handler, or even dynamically inject logic at runtime.
+- Subclassing and instrumentation: You can create subclasses or modify existing classes, changing their behavior in a seamless way.
+- Annotations and Fields: It supports adding fields, methods, and annotations to existing classes or newly generated ones.
+- Integration with agents: Byte Buddy integrates well with Java agents, allowing developers to redefine and instrument classes that have already been loaded by the JVM.
+
+### Use cases
+
+- AOP (Aspect-Oriented Programming): Libraries like Spring or JHipster use Byte Buddy to enhance classes with cross-cutting concerns (logging, security, transactions).
+- Mocking frameworks: Mockito and other testing libraries use Byte Buddy to generate mock objects for testing.
+- Instrumentation and profiling: Byte Buddy is useful for writing Java agents that monitor or profile applications by injecting behavior into the running application.
+
