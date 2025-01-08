@@ -1016,3 +1016,6 @@ In certain scenarios, explicitly calling `repository.save()` might seem redundan
 However, there are times when calling `repository.save()` is still necessary, such as introducing new entities to the persistence context or explicitly controlling when the persistence context should sync with the database (e.g., to get the generated ID after an insert).
 
 Understanding these nuances ensures that you write efficient and clean code while leveraging the full power of Spring's transaction management features.
+
+https://stackoverflow.com/questions/8190926/transactional-saves-without-calling-update-method
+https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/objectstate.html
