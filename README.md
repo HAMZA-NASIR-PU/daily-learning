@@ -1035,3 +1035,12 @@ https://spring.io/blog/2022/07/31/how-to-integrate-hibernates-multitenant-featur
 ## Difference between Observables and Promises
 
 
+## Front end Interview Question EventEmitter
+
+https://frontendlead.com/coding-questions/advanced-event-emitter-implementation-javascript
+https://www.greatfrontend.com/questions/javascript/event-emitter
+https://medium.com/@rahul.jindal57/github-repo-node-js-interview-questions-for-event-emitters-streams-and-multi-threading-24d5dcfb7487
+
+
+
+
