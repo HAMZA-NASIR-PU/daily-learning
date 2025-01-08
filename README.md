@@ -1031,3 +1031,7 @@ https://stackoverflow.com/questions/78674892/how-do-i-get-hibernate-tenantid-to-
 org.hibernate.context.spi.CurrentTenantIdentifierResolver
 
 https://spring.io/blog/2022/07/31/how-to-integrate-hibernates-multitenant-feature-with-spring-data-jpa-in-a-spring-boot-application
+
+## Difference between Observables and Promises
+
+
