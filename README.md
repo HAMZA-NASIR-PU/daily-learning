@@ -874,4 +874,124 @@ The key difference between a web server and an application server lies in their 
 ## Where, SQLDelete, Loader annotation in Hibernate
 
 
+## EventEmitter in Angular 17
+
+In Angular 17, `EventEmitter` is a class that's part of the `@angular/core` package and is used to create custom events in components. It extends the `Subject` class from RxJS, allowing you to emit events and subscribe to them.
+
+Here’s a quick breakdown of its key features and how it is typically used:
+
+1. **Purpose**: The primary use of `EventEmitter` is to facilitate communication from child components to parent components. It allows child components to emit events that parent components can listen to, enabling interaction and data exchange.
+
+2. **Usage**:
+   - **Importing**: First, you import `EventEmitter` and `Output` from `@angular/core`.
+   - **Declare**: In the child component, you declare an instance of `EventEmitter` and mark it with the `@Output()` decorator. This decorator makes the property available to the parent component for event binding.
+   - **Emit Events**: Within the child component, you use the `.emit()` method of `EventEmitter` to send data or a notification to the parent.
+   - **Listen to Events**: In the parent component template, you use event binding to listen to these events and trigger appropriate functions.
+
+3. **Code Example**:
+
+   ```typescript
+   // child.component.ts
+   import { Component, Output, EventEmitter } from '@angular/core';
+
+   @Component({
+     selector: 'app-child',
+     template: `<button (click)="sendMessage()">Send Message</button>`
+   })
+   export class ChildComponent {
+     @Output() messageEvent = new EventEmitter<string>();
+
+     sendMessage() {
+       this.messageEvent.emit('Hello from Child!');
+     }
+   }
+   ```
+
+   ```html
+   <!-- parent.component.html -->
+   <app-child (messageEvent)="receiveMessage($event)"></app-child>
+   ```
+
+   ```typescript
+   // parent.component.ts
+   import { Component } from '@angular/core';
+
+   @Component({
+     selector: 'app-parent',
+     templateUrl: './parent.component.html'
+   })
+   export class ParentComponent {
+     receiveMessage(message: string) {
+       console.log('Message received:', message);
+     }
+   }
+   ```
+
+4. **Best Practices**:
+   - Use specific names for event emitters that convey their purpose, improving code readability.
+   - Clean up subscriptions if you manually subscribe to events to prevent memory leaks, although `EventEmitter` itself in Angular manages subscriptions automatically.
+
+## Why Does Angular's EventEmitter Extend RxJS's Subject Class?
+
+`EventEmitter` in Angular extends the `Subject` class from RxJS primarily to leverage the capabilities of observables for event handling. Here are some reasons why this design choice is beneficial:
+
+1. **Reactive Programming**: By extending `Subject`, `EventEmitter` gains the powerful features of observables, allowing developers to apply reactive programming principles. This includes the capability to easily handle asynchronous data streams and leverage operators for more complex data transformations.
+
+2. **Multiple Subscribers**: Like a `Subject`, an `EventEmitter` can have multiple subscribers. This means multiple parts of an application can listen to the same event and respond without interfering with one another.
+
+3. **Hot Observable**: `EventEmitter` acts as a "hot" observable because it begins emitting data as soon as it is created and continues to emit regardless of whether there are any subscribers. This behavior is suitable for event-driven architectures where events may be dispatched at any time.
+
+4. **Flexibility in Event Handling**: By using RxJS subjects, developers can take advantage of advanced features like error handling, completions, and unsubscriptions, which are intrinsic to RxJS observables.
+
+5. **Uniform API**: Extending `Subject` allows `EventEmitter` to have a consistent API with other observables in Angular applications, making it easier for developers to understand and use.
+
+
+
+## What is $event in Angular
+
+`$event` is a special variable in Angular templates used to represent the data or payload associated with an event.
+
+### In the Context of Event Binding:
+
+When you bind an event in a template, Angular automatically provides an `$event` variable that contains the event object or data emitted by the event, allowing you to access properties or methods of the event directly within the template.
+
+### Usage:
+
+1. **Standard DOM Events**:
+   For standard DOM events like click, input, etc., `$event` contains the properties of the JavaScript Event object.
+
+   ```html
+   <button (click)="handleClick($event)">Click Me</button>
+   ```
+
+   ```typescript
+   handleClick(event: MouseEvent) {
+     console.log(event.clientX, event.clientY); // access coordinates of the click
+   }
+   ```
+
+2. **Custom Events**:
+   When dealing with custom component events using `EventEmitter`, `$event` holds the emitted data.
+
+   ```typescript
+   // In child.component.ts
+   @Output() messageEvent = new EventEmitter<string>();
+   // Emission
+   this.messageEvent.emit('Hello Parent');
+   ```
+
+   ```html
+   <!-- In parent.component.html -->
+   <app-child (messageEvent)="receiveMessage($event)"></app-child>
+   ```
+
+   ```typescript
+   // In parent.component.ts
+   receiveMessage(message: string) {
+     console.log(message); // Outputs: Hello Parent
+   }
+   ```
+
+By using `$event`, you can pass detailed information from the event to your component methods, enabling more dynamic and responsive behavior within your Angular applications.
+
 
