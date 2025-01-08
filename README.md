@@ -1020,6 +1020,10 @@ Understanding these nuances ensures that you write efficient and clean code whil
 https://stackoverflow.com/questions/8190926/transactional-saves-without-calling-update-method
 https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/objectstate.html
 
+## Create a simple Event Emitter
+
+https://xgrommx.github.io/rx-book/content/how_do_i/simple_event_emitter.html
+
 ## Multi-tenancy in Spring Boot Hibernate
 
 https://stackoverflow.com/questions/78674892/how-do-i-get-hibernate-tenantid-to-work-with-joincolumn
