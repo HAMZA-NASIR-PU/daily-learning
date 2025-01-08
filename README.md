@@ -1019,3 +1019,11 @@ Understanding these nuances ensures that you write efficient and clean code whil
 
 https://stackoverflow.com/questions/8190926/transactional-saves-without-calling-update-method
 https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/objectstate.html
+
+## Multi-tenancy in Spring Boot Hibernate
+
+https://stackoverflow.com/questions/78674892/how-do-i-get-hibernate-tenantid-to-work-with-joincolumn
+
+org.hibernate.context.spi.CurrentTenantIdentifierResolver
+
+https://spring.io/blog/2022/07/31/how-to-integrate-hibernates-multitenant-feature-with-spring-data-jpa-in-a-spring-boot-application
