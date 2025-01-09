@@ -1174,3 +1174,6 @@ main3();
 
 https://eishta.medium.com/javascript-interview-implement-an-event-emitter-class-8e983a2c3b12
 
+https://stackoverflow.com/questions/31735129/how-do-javascript-closures-work-at-a-low-level
+
+https://dmitryfrank.com/articles/js_closures
