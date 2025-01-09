@@ -1177,3 +1177,10 @@ https://eishta.medium.com/javascript-interview-implement-an-event-emitter-class-
 https://stackoverflow.com/questions/31735129/how-do-javascript-closures-work-at-a-low-level
 
 https://dmitryfrank.com/articles/js_closures
+
+## Difference between Observables and Promises
+
+https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
+
+Observables are called "lazy" because they only begin to execute their logic when a subscriber actively subscribes to them, meaning no actions are taken until someone is actively listening for data, unlike a Promise which starts executing immediately regardless of whether anyone is listening; this allows for efficient data handling and building complex data pipelines through chaining operators before actual execution occurs.
+
