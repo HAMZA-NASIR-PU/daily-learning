@@ -1073,3 +1073,104 @@ https://medium.com/@rahul.jindal57/github-repo-node-js-interview-questions-for-e
 4. If you ever get full or disinterested, you cancel the subscription to stop receiving cookies.
 
 This is how the basic components of RxJS work together in a simple analogy! Does this help you to understand ? If yes, then follow my github profile.
+
+## Implement EventEmitter in Javascript from scratch
+
+### My solution:
+
+```javascript
+class Event {
+    constructor(
+        eventName,
+        eventIndex,
+        eventEmitterReference,
+        callback
+    ) {
+        this.eventName = eventName;
+        this.eventIndex = eventIndex;
+        this.eventEmitterReference = eventEmitterReference;
+        this.callback = callback;
+    }
+
+    release() {
+        this.eventEmitterReference.map.get(this.eventName).splice(this.eventIndex, 1);
+    }
+
+    call(...args) {
+        this.callback(...args)
+    }
+
+}
+
+class EventEmitter {
+
+    constructor() {
+        this.map = new Map();
+    }
+
+    subscribe(eventName, callback) {
+        if (!this.map.has(eventName)) {
+            this.map.set(eventName, []);
+        }
+        let sizeOfArray = this.map.get(eventName).length;
+        let e = new Event(eventName, sizeOfArray, this, callback);
+        this.map.get(eventName).push(e);
+        return e;
+    }
+
+    emit(eventName, ...args) {
+
+        // case 1: If an eventName is not present, throw error
+        // case 2: If an eventName is present, then run all the events related to that eventName
+        if (!this.map.has(eventName)) {
+            return;
+        }
+        let arr = this.map.get(eventName);
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].call(...args);
+        }
+    }
+}
+
+
+function main1() {
+    let emitter = new EventEmitter();
+    let receivedData = null;
+
+    emitter.subscribe('testEvent', (data) => {
+        receivedData = data;
+    });
+
+    emitter.emit('testEvent', 'HELLO WORLD');
+
+    console.log("received Data =" ,receivedData);
+}
+
+function main2() {
+    let emitter = new EventEmitter();
+    let callCount = 0;
+
+    emitter.subscribe('testEvent', () => callCount++);
+    emitter.subscribe('testEvent', () => callCount++);
+
+    emitter.emit('testEvent');
+
+    console.log("Call Count =" ,callCount);
+}
+
+function main3() {
+    let emitter = new EventEmitter();
+    let callCount = 0;
+
+    const subscription = emitter.subscribe('testEvent', () => callCount++);
+    emitter.emit('testEvent');
+    subscription.release();
+    emitter.emit('testEvent');
+    console.log("Call Count =" ,callCount);
+}
+
+main3();
+```
+
+https://eishta.medium.com/javascript-interview-implement-an-event-emitter-class-8e983a2c3b12
+
