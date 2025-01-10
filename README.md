@@ -1293,6 +1293,8 @@ adder(); // 3
 adder(); // 4
 ```
 
+## Function-scoped, Global-scoped, Block-scoped in Javascript
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
