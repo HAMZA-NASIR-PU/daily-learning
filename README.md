@@ -1178,6 +1178,73 @@ https://stackoverflow.com/questions/31735129/how-do-javascript-closures-work-at-
 
 https://dmitryfrank.com/articles/js_closures
 
+## Closures in Javascript
+
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope. In JavaScript, closures are created every time a function is created, at function creation time.
+
+## Closures and Memory Management
+
+### Explain how closures affect memory management in JavaScript. How would you detect and mitigate potential memory leaks caused by closures?
+
+Closures in JavaScript have a significant impact on memory management because they maintain references to the variables in their lexical scope even after the function that created them has finished execution. This feature, while powerful for maintaining state and encapsulating functionality, can lead to memory leaks if not managed carefully.
+
+Suppose we have a setup where closures inadvertently hold onto more data than necessary due to event listeners:
+
+```javascript
+function createButtonControl(id) {
+    const button = document.getElementById(id);
+    let clickCount = 0;
+
+    function handleClick() {
+        clickCount++;
+        console.log(`Button clicked ${clickCount} times.`);
+    }
+
+    // Event listener closure holds the reference to `handleClick`
+    button.addEventListener('click', handleClick);
+
+    // The issue arises if we forget to remove the event listener:
+    // We created a closure that holds a reference to button and its related data
+}
+```
+
+If this function is called multiple times or if the button is removed from the DOM without removing the event listener, the handleClick closure can keep the button and clickCount in memory unnecessarily, leading to a memory leak.
+
+#### Mitigating the memory leak
+
+```javascript
+function createButtonControl(id) {
+    const button = document.getElementById(id);
+    let clickCount = 0;
+
+    function handleClick() {
+        clickCount++;
+        console.log(`Button clicked ${clickCount} times.`);
+    }
+
+    // Properly manage the lifecycle of the event listener
+    button.addEventListener('click', handleClick);
+
+    return () => {
+        // Remove the event listener when done
+        button.removeEventListener('click', handleClick);
+        console.log('Event listener removed.');
+    };
+}
+
+// Usage
+const removeControl = createButtonControl('myButton');
+
+// Later when the control is no longer needed
+removeControl();
+```
+
+- `Event Listener Management`: By returning a function to remove the event listener, we allow the caller to manage the life cycle of the closure effectively.
+- `Manual Clean-up`: This ensures that references held by the closure (like button and handleClick) can be freed when they are no longer needed.
+- `Avoiding Long-lived Captures`: Be cautious of attaching closures to global contexts or objects that have long lifecycles without a clean-up mechanism.
+
+
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
