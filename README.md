@@ -1243,7 +1243,55 @@ removeControl();
 - `Manual Clean-up`: This ensures that references held by the closure (like button and handleClick) can be freed when they are no longer needed.
 - `Avoiding Long-lived Captures`: Be cautious of attaching closures to global contexts or objects that have long lifecycles without a clean-up mechanism.
 
+### Implementation of Class in Javascript using closures
 
+```javascript
+function createCollectionTracker() {
+    const collection = {};
+
+    return {
+        addItem(item) {
+            if (!collection[item]) {
+                collection[item] = 0;
+            }
+            collection[item]++;
+        },
+        getCount(item) {
+            return collection[item] || 0;
+        },
+        getItems() {
+            return Object.keys(collection).filter(key => collection[key] > 0);
+        }
+    };
+}
+
+const tracker = createCollectionTracker();
+tracker.addItem('apple');
+tracker.addItem('banana');
+tracker.addItem('apple');
+
+console.log(tracker.getCount('apple')); // What will this log?
+console.log(tracker.getCount('banana')); // What will this log?
+console.log(tracker.getItems()); // What will this log maybe with explanation?
+```
+
+## Important Note Regarding Closures in Javascript
+
+Closure is observed when an inner function is returned outside of it's lexical scope but still maintains a connection to its lexical environment. A Closure occurs when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope. In simpler terms, a Closure gives you access to an outer function's scope from an inner function.
+```javascript
+function addOne() {
+  var x = 1;
+   function bar() {
+    console.log(++x);
+  }
+	return bar;
+}
+
+var adder = addOne();
+adder(); // 2
+adder(); // 3
+adder(); // 4
+```
 
 ## Difference between Observables and Promises
 
