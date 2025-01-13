@@ -1825,6 +1825,22 @@ In programming, "lexical scope" refers to a variable's scope being determined by
 - Lexical Scope: Based on where a variable is defined in the code (static, compile-time). 
 - Dynamic Scope: Based on where a function is called from (runtime). 
 
+## Javascript Interview Question
+
+Give the output of that code:
+
+```javascript
+const x = 0;
+function pippo() {
+ console.log(x);
+}
+function pluto() {
+ const x = 1;
+ pippo();
+}
+pluto();
+```
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
