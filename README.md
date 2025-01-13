@@ -1709,6 +1709,107 @@ Now, `let i` is block-scoped, so each iteration creates a new `i`.
 - `let` and `const` have a **temporal dead zone**: You cannot use them before their declaration.
 - **Function expressions are not hoisted**: Only the variable declaration is hoisted.
 
+## 🔍✨ Exploring JavaScript Scoping: var vs let in Loops & the Magic of Closures 🔐
+
+### `var`
+
+The following code explains how var behaves in a for loop with asynchronous method execution:
+
+```javascript
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+```
+
+```javascript
+function myLoop () {
+    var i = 0;
+    function f1 () {
+      console.log(i);  
+    }
+    
+    i = 1;
+    function f2 () {
+        console.log(i);
+    }
+    
+    i = 2;
+    function f3 () {
+        console.log(i);
+    }
+    
+    i = 3;
+    function f4 () {
+        console.log(i);
+    }
+    
+    return {
+        f1: f1, f2: f2, f3: f3, f4: f4
+    };
+}
+
+var func = myLoop();
+
+func.f1();
+func.f2();
+func.f3();
+func.f4();
+```
+
+### `let`
+
+The following code will explain how `let` behaves in a for loop:
+
+```javascript
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+```
+
+```javascript
+
+function myLoop2 () {
+    
+    {
+        let i = 0;
+        function f1 () {
+            console.log(i);
+        }
+    }
+    
+    {
+        let i = 1;
+        function f2 () {
+            console.log(i);
+        }
+    }
+    
+    {
+        let i = 2;
+        function f3 () {
+            console.log(i);
+        }
+    }
+    
+    {
+        let i = 3;
+        function f4 () {
+            console.log(i);
+        }
+    }
+    
+    return {
+        f1: f1, f2: f2, f3: f3, f4: f4
+    };
+}
+
+var func2 = myLoop2();
+
+func2.f1();
+func2.f2();
+func2.f3();
+func2.f4();
+```
 
 ## Difference between Observables and Promises
 
