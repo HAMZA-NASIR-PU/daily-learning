@@ -1811,6 +1811,11 @@ func2.f3();
 func2.f4();
 ```
 
+- `ES5 (older versions of JavaScript)`: Function declarations are not block-scoped. If you declare a function inside a block, such as within an if statement or for loop, the function is hoisted to the nearest function or global scope, ignoring the block. This means it will be available outside the block as well.
+- ES6+ (modern JavaScript): Function declarations inside a block are block-scoped. This means the function is only available inside the block, similar to how let and const work.
+
+In strict mode (e.g., using 'use strict'), functions inside blocks are always block-scoped. In non-strict mode, the behavior may vary depending on the environment (browsers or versions).
+
 #### Note
  In the context of asynchronous operations, closures are particularly useful because they enable access to variables that were defined before the asynchronous code executes.
 
