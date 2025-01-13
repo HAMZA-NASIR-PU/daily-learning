@@ -1846,6 +1846,31 @@ function pluto() {
 pluto();
 ```
 
+The output of the code is:
+
+```
+0
+```
+
+### Explanation:
+
+1. **Global Scope**:
+   - A variable `x` is declared and initialized with `0`.
+   - A function `pippo` is defined, which logs the value of `x`.
+
+2. **Function `pluto`**:
+   - Inside `pluto`, a new `x` variable is declared and initialized with `1`. 
+   - The function `pippo` is called.
+
+3. **Function Execution**:
+   - When `pluto` is called, the variable `x` within its local scope is not used by `pippo`. This is because `pippo` was defined in the global scope and retains its reference to the global variable `x`.
+   - JavaScript uses **lexical scoping**. This means that a function's scope is determined by its definition, not by its invocation.
+
+4. **Final Output**:
+   - The `console.log(x)` inside `pippo` refers to the `x` from the global scope, which is `0`.
+
+So the output is `0`.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
