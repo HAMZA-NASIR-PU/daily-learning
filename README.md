@@ -1811,6 +1811,9 @@ func2.f3();
 func2.f4();
 ```
 
+#### Note
+ In the context of asynchronous operations, closures are particularly useful because they enable access to variables that were defined before the asynchronous code executes.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
