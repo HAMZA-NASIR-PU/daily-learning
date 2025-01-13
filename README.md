@@ -1814,6 +1814,17 @@ func2.f4();
 #### Note
  In the context of asynchronous operations, closures are particularly useful because they enable access to variables that were defined before the asynchronous code executes.
 
+## What is `scope` in Javascript
+
+`Scope` are a the set of rules that govern how the engine can look up a variable by its identifier name and find it, either in the current scope, or in any of the nested scopes it’s contained within.
+
+In programming, "lexical scope" refers to a variable's scope being determined by its position in the source code (where it is defined), while "dynamic scope" means a variable's scope is determined by the calling context at runtime, essentially based on the most recent assignment to that variable when the function is called; most modern languages use lexical scoping as it is considered more predictable and easier to reason about, while dynamic scoping is less common and can lead to unexpected behavior.
+
+
+### Scope Determination:
+- Lexical Scope: Based on where a variable is defined in the code (static, compile-time). 
+- Dynamic Scope: Based on where a function is called from (runtime). 
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
