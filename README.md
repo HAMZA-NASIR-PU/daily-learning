@@ -1292,8 +1292,423 @@ adder(); // 2
 adder(); // 3
 adder(); // 4
 ```
+## Application of Clocusres
+
+```javascript
+document.getElementById('redButton').onclick = func('red');
+document.getElementById('blueButton').onclick = func('blue');
+document.getElementById('greenButton').onclick = func('green');
+
+function func(color) {
+    return () => {
+        document.body.style.color = `${color}`;
+    };
+}
+```
+This example highlights how closures provide a powerful way to "freeze" specific values in functions for later use. It's a clean and reusable pattern, especially in scenarios like event handling.
+
+## Closure in a Loop
+
+```javascript
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+```
+
+You might expect the output to be:
+```sql
+0
+1
+2
+```
+
+Actual Output:
+```sql
+3
+3
+3
+```
+
+### Why Does This Happen?
+
+1. Scope of var: The variable i declared with var has function scope, not block scope. By the time the setTimeout callback executes (after 1000 ms), the loop has already completed, and the value of i is 3.
+2. Callback Delay: The setTimeout function registers a callback to be executed later. When the callback is executed, it accesses the same i variable, which by then has the value 3.
+
+### Solution with Closures
+
+To preserve the correct value of i for each iteration, you can use a closure. By creating a new scope for each iteration, you "capture" the value of i at that specific point in time.
+
+#### Using an Immediately Invoked Function Expression (IIFE):
+
+```javascript
+for (var i = 0; i < 3; i++) {
+    (function(i) {
+        setTimeout(() => {
+            console.log(i);
+        }, 1000);
+    })(i);
+}
+```
+
+#### How It Works:
+1. The IIFE (Immediately Invoked Function Expression) creates a new scope for each iteration of the loop.
+2. The value of i is passed as an argument to the IIFE, preserving its value inside the function's scope.
+3. The setTimeout callback uses the i value from the IIFE's scope, not the outer i.
+
+Output:
+
+```sql
+0
+1
+2
+```
+
+#### Modern Solution with let:
+
+Since let has block scope, you don't need an IIFE in modern JavaScript:
+
+```javascript
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+```
+
+#### Why Does This Work?
+
+1. The let declaration creates a new block-scoped i for each iteration.
+2. Each iteration's i is independent of others, and the setTimeout callback accesses the correct i for that iteration.
+
 
 ## Function-scoped, Global-scoped, Block-scoped in Javascript
+
+Let’s break down **function scope**, **global scope**, and **local scope** in a beginner-friendly way.
+
+
+### **1. Scope: What Does It Mean?**
+**Scope** determines where variables and functions are accessible in your code. It’s the context in which a variable is defined.
+
+Think of it as:
+- **Global scope**: The world — everyone can see it.
+- **Function scope**: A house — only people inside the house can see it.
+- **Local (block) scope**: A room in the house — only people in the room can see it.
+
+### **2. Global Scope**
+
+#### **What Is It?**
+A variable or function is in the global scope if it’s defined **outside of any function or block**. It’s accessible anywhere in your program.
+
+#### **Example:**
+```javascript
+var globalVariable = "I am global";
+
+function showGlobal() {
+    console.log(globalVariable); // Accessible here
+}
+
+showGlobal(); // Output: I am global
+console.log(globalVariable); // Accessible here too
+```
+
+#### **Key Points:**
+- Declared outside of any function.
+- Available everywhere, even inside functions.
+
+
+### **3. Function Scope**
+
+#### **What Is It?**
+A variable declared inside a function is accessible **only within that function**. It is not accessible outside.
+
+#### **Example:**
+```javascript
+function myFunction() {
+    var functionScoped = "I am inside a function";
+    console.log(functionScoped); // Accessible here
+}
+
+myFunction();
+console.log(functionScoped); // Error: functionScoped is not defined
+```
+
+#### **Key Points:**
+- Declared inside a function.
+- Can’t be accessed from outside the function.
+
+
+### **4. Local (Block) Scope**
+
+#### **What Is It?**
+Variables declared with `let` or `const` inside a block (`{}`) are accessible **only within that block**. This is called **block scope**. A block can be inside a function, loop, or conditional.
+
+#### **Example:**
+```javascript
+{
+    let blockScoped = "I am in a block";
+    console.log(blockScoped); // Accessible here
+}
+
+console.log(blockScoped); // Error: blockScoped is not defined
+```
+
+#### **Example in Loops:**
+```javascript
+for (let i = 0; i < 3; i++) {
+    console.log(i); // Accessible here
+}
+
+console.log(i); // Error: i is not defined
+```
+
+#### **Key Points:**
+- Declared with `let` or `const`.
+- Exists only inside the block where it’s defined.
+
+---
+
+### **Comparing `var`, `let`, and `const` Scopes**
+
+#### `var`: Function Scope
+```javascript
+function myFunction() {
+    var x = 10;
+    if (true) {
+        var x = 20; // Same variable
+        console.log(x); // 20
+    }
+    console.log(x); // 20 (still the same variable)
+}
+myFunction();
+```
+
+#### `let` and `const`: Block Scope
+```javascript
+function myFunction() {
+    let x = 10;
+    if (true) {
+        let x = 20; // Different variable
+        console.log(x); // 20
+    }
+    console.log(x); // 10 (original variable)
+}
+myFunction();
+```
+
+---
+
+### **Global vs Function vs Local Scope Example**
+
+```javascript
+// Global Scope
+let globalVar = "I am global";
+
+function myFunction() {
+    // Function Scope
+    let functionVar = "I am in a function";
+
+    if (true) {
+        // Block Scope
+        let blockVar = "I am in a block";
+        console.log(globalVar); // Accessible
+        console.log(functionVar); // Accessible
+        console.log(blockVar); // Accessible
+    }
+
+    console.log(blockVar); // Error: blockVar is not defined
+}
+
+myFunction();
+console.log(globalVar); // Accessible
+console.log(functionVar); // Error: functionVar is not defined
+```
+
+---
+
+### **Why Scope Matters**
+
+1. **Prevent Conflicts**:
+   - Variables in the global scope can accidentally overwrite each other.
+   - Use local scope to avoid this.
+
+2. **Memory Efficiency**:
+   - Variables in local or block scope are destroyed once the function/block is done executing.
+
+3. **Code Readability**:
+   - Proper scoping makes it easier to understand which parts of your code can access a variable.
+
+---
+
+### **Key Takeaways**
+1. **Global Scope**:
+   - Variables declared outside functions are accessible everywhere.
+   - Be careful — too many global variables can cause bugs.
+
+2. **Function Scope**:
+   - Variables declared inside a function are accessible only within that function.
+
+3. **Local (Block) Scope**:
+   - Variables declared with `let` or `const` inside a block (`{}`) are accessible only within that block.
+
+## Hoisting in Javascript
+
+**Hoisting** is a behavior in JavaScript where variable and function declarations are moved to the top of their scope during the compilation phase, **before the code is executed**. This affects how variables and functions behave in different scopes.
+
+Let’s break it down:
+
+
+### **1. What is Hoisting?**
+Hoisting means that:
+1. **Variable and function declarations** are moved to the top of their scope.
+2. Only the **declaration** is hoisted, not the initialization.
+
+
+### **2. Hoisting with Variable Declarations**
+
+#### **With `var` (Function Scope):**
+Variables declared with `var` are hoisted, but their value is `undefined` until the line of code where they are initialized.
+
+```javascript
+console.log(a); // Output: undefined (declaration is hoisted, but not the value)
+var a = 10;
+console.log(a); // Output: 10
+```
+
+Internally, JavaScript treats the code like this:
+```javascript
+var a; // Declaration is hoisted
+console.log(a); // undefined
+a = 10; // Initialization happens here
+console.log(a); // 10
+```
+
+#### **With `let` and `const` (Block Scope):**
+Variables declared with `let` and `const` are hoisted, but they are not initialized. They are in a "temporal dead zone" (TDZ) from the start of the block until their declaration is encountered.
+
+```javascript
+console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 20;
+
+console.log(c); // ReferenceError: Cannot access 'c' before initialization
+const c = 30;
+```
+
+---
+
+### **3. Hoisting with Function Declarations**
+
+Function declarations are fully hoisted, meaning you can call a function **before it is defined**.
+
+#### **Example:**
+```javascript
+sayHello(); // Output: Hello, World!
+
+function sayHello() {
+    console.log("Hello, World!");
+}
+```
+
+Internally:
+```javascript
+function sayHello() {
+    console.log("Hello, World!");
+}
+
+sayHello();
+```
+
+#### **Key Point:**
+Only **function declarations** are hoisted. **Function expressions** are not.
+
+
+### **4. Hoisting with Function Expressions**
+
+If you assign a function to a variable, it behaves like a variable and only the variable declaration is hoisted, not the function.
+
+#### **Example:**
+```javascript
+sayHello(); // TypeError: sayHello is not a function
+
+var sayHello = function () {
+    console.log("Hello, World!");
+};
+```
+
+Internally:
+```javascript
+var sayHello; // Declaration is hoisted
+sayHello(); // Error: sayHello is undefined
+sayHello = function () {
+    console.log("Hello, World!");
+};
+```
+
+### **5. How Hoisting Relates to Scope**
+
+Hoisting works differently depending on the scope:
+
+#### **Global Scope:**
+Variables and functions declared in the global scope are hoisted to the top of the global context.
+
+```javascript
+console.log(globalVar); // undefined
+var globalVar = 10;
+```
+
+#### **Function Scope:**
+Variables and functions declared inside a function are hoisted to the top of the function.
+
+```javascript
+function test() {
+    console.log(localVar); // undefined
+    var localVar = 20;
+    console.log(localVar); // 20
+}
+test();
+```
+
+#### **Block Scope:**
+With `let` and `const`, hoisting still occurs, but they remain in the **temporal dead zone** until the declaration is encountered.
+
+```javascript
+{
+    console.log(blockVar); // ReferenceError
+    let blockVar = 30;
+}
+```
+
+### **6. Combining Hoisting with Closures**
+
+When closures capture variables, hoisting can sometimes lead to unexpected behavior if not understood properly.
+
+#### **Example:**
+```javascript
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+```
+
+- `var i` is hoisted and shared across all iterations.
+- By the time the `setTimeout` callbacks execute, the loop has finished, and `i` is `3`.
+
+Fix it using `let`:
+```javascript
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+```
+
+Now, `let i` is block-scoped, so each iteration creates a new `i`.
+
+
+### **7. Summary of Hoisting**
+- **Declarations are hoisted**: Variables (`var`, `let`, `const`) and functions are moved to the top of their scope.
+- **Initialization is not hoisted**: Variables are only assigned values at the point where they are initialized.
+- `let` and `const` have a **temporal dead zone**: You cannot use them before their declaration.
+- **Function expressions are not hoisted**: Only the variable declaration is hoisted.
+
 
 ## Difference between Observables and Promises
 
