@@ -2022,6 +2022,37 @@ An LHS reference occurs when you attempt to **assign a value** to a variable.
   - Non-Strict Mode: Creates an implicit global variable.  
   - Strict Mode: Throws `ReferenceError`.
 
+**NOTE**: Lexical scope means that scope is defined by author-time decisions of where functions are declared. The lexing phase of compilation is essentially able to know where and how all identifiers are declared, and thus predict how they will be looked up during execution.
+
+## Scope in Javascript
+
+Scope consists of a series of “bubbles” that each act as a container or bucket, in which identifiers (variables, functions) are declared. These bubbles nest neatly inside each other, and this nesting is defined at author time.
+
+## Collision Avoidance in Javascript
+
+Another benefit of “hiding” variables and functions inside a scope is
+to avoid unintended collision between two different identifiers with
+the same name but different intended usages. Collision results often
+in unexpected overwriting of values.
+
+```javascript
+function foo() {
+    function bar(a) {
+        i = 3; // changing the `i` in the enclosing scope's
+        // for-loop
+        console.log(a + i);
+    }
+    for (var i = 0; i < 10; i++) {
+        bar(i * 2); // oops, inifinite loop ahead!
+    }
+}
+foo();
+```
+
+## What Is the Principle of Least Privilege? 
+
+The principle of least privilege (PoLP) is an information security concept which maintains that a user or entity should only have access to the specific data, resources and applications needed to complete a required task.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
