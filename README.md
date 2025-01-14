@@ -2184,6 +2184,48 @@ Although Java does not support first-class functions natively, starting from **J
 ### Conclusion:
 Functions in Java are not first-class citizens because they cannot exist independently of a class or interface. However, with the introduction of lambda expressions and functional interfaces, Java provides tools to emulate first-class function behavior effectively.
 
+## Interesting Closure Javascript Code
+
+```javascript
+function myLoop () {
+    var i = 0;
+    function f1 () {
+      console.log(i);  
+    }
+    
+    i = 1;
+    function f2 () {
+        console.log(i);
+    }
+    
+    i = 2;
+    function f3 () {
+        console.log(i);
+    }
+    
+    i = 3;
+    function f4 () {
+        console.log(i);
+    }
+    
+    function f5 (newValue) {
+        i = newValue;
+    }
+    
+    return {
+        f1: f1, f2: f2, f3: f3, f4: f4, f5: f5
+    };
+}
+
+var func = myLoop();
+
+func.f1();
+func.f2();
+func.f5(200);
+func.f3();
+func.f4();s
+```
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
