@@ -1721,30 +1721,38 @@ for (var i = 0; i < 3; i++) {
 }
 ```
 
-```javascript
-function myLoop () {
+```javascriptfunction myLoop () {
     var i = 0;
-    function f1 () {
-      console.log(i);  
-    }
+    
+    var f1 = (function (val) {
+        return () => {
+            console.log(val);
+        }
+    })(i);
     
     i = 1;
-    function f2 () {
-        console.log(i);
-    }
+    var f2 = (function (val) {
+        return () => {
+            console.log(val);
+        }
+    })(i);
     
     i = 2;
-    function f3 () {
-        console.log(i);
-    }
+    var f3 = (function (val) {
+        return () => {
+            console.log(val);
+        }
+    })(i);
     
     i = 3;
-    function f4 () {
-        console.log(i);
-    }
+    var f4 = (function (val) {
+        return () => {
+            console.log(val);
+        }
+    })(i);
     
     return {
-        f1: f1, f2: f2, f3: f3, f4: f4
+        f1: f1, f2: f2, f3: f3, f4: f4,
     };
 }
 
@@ -1767,7 +1775,6 @@ for (let i = 0; i < 3; i++) {
 ```
 
 ```javascript
-
 function myLoop2 () {
     
     {
