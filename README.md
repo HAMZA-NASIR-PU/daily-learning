@@ -2152,6 +2152,38 @@ According to wikipedia:
 
 In Python, all functions are first-class, just like in JavaScript.
 
+## 🌟 Are Functions in Java First-Class Citizens? 🤔
+
+No, **functions in Java are not first-class citizens**. In Java, a first-class citizen (or first-class object) is an entity that can:
+
+1. Be assigned to a variable.
+2. Be passed as an argument to a method.
+3. Be returned from a method.
+
+Although Java does not support first-class functions natively, starting from **Java 8**, it introduced **lambda expressions** and the **`java.util.function`** package, which provide some functional programming capabilities. While these features simulate first-class functions, they are still implemented as objects under the hood, not true functions.
+
+### Explanation:
+
+1. **Before Java 8:**
+   - Functions couldn't be passed as arguments or returned from methods.
+   - Developers used interfaces or abstract classes to simulate such behavior.
+
+2. **Java 8 and Beyond:**
+   - **Lambda expressions** allow you to create anonymous functions:
+     ```java
+     Function<Integer, Integer> square = x -> x * x;
+     System.out.println(square.apply(5)); // Output: 25
+     ```
+   - The `Function` interface is a part of the `java.util.function` package, which provides a way to treat behavior as data.
+   - Lambda expressions and method references make Java more expressive, but the functions are still wrapped as objects.
+
+3. **Key Difference:**
+   - In true first-class function support (e.g., in Python or JavaScript), functions are standalone entities.
+   - In Java, functions are represented by objects (e.g., instances of functional interfaces like `Function`, `Consumer`, etc.).
+
+### Conclusion:
+Functions in Java are not first-class citizens because they cannot exist independently of a class or interface. However, with the introduction of lambda expressions and functional interfaces, Java provides tools to emulate first-class function behavior effectively.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
