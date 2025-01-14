@@ -2150,6 +2150,8 @@ According to wikipedia:
 
 `In programming languages, name binding is the association of entities (data and/or code) with identifiers.[1] An identifier bound to an object is said to reference that object. Machine languages have no built-in notion of identifiers, but name-object bindings as a service and notation for the programmer is implemented by programming languages. Binding is intimately connected with scoping, as scope determines which names bind to which objects – at which locations in the program code (lexically) and in which one of the possible execution paths (temporally).`
 
+In Python, all functions are first-class, just like in JavaScript.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
