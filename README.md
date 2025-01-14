@@ -1871,6 +1871,157 @@ The output of the code is:
 
 So the output is `0`.
 
+## Meaning of **Lexical** in "Lexical Scoping" (JavaScript)
+
+The term **lexical** in **lexical scoping** refers to the **physical or textual structure of the code as written by the programmer**. It means that the scope of a variable is determined by its position in the source code at the time the code is written (or parsed), not at runtime.
+
+In JavaScript:
+- Lexical scoping is the rule that defines how variable names are resolved in nested functions.
+- Inner functions have access to variables defined in their outer scope due to where the functions are **declared** in the code, not where they are **called**.
+
+---
+
+### Example:
+```javascript
+function outer() {
+    let outerVariable = "I'm from the outer function";
+
+    function inner() {
+        console.log(outerVariable); // Accessing a variable from the outer scope
+    }
+
+    inner();
+}
+
+outer();
+```
+
+#### Key Points:
+1. **Declaration Matters**: 
+   - The `inner` function is lexically inside the `outer` function, so it has access to `outerVariable`.
+2. **Not Affected by Call Location**:
+   - Even if `inner` were passed elsewhere and called, it would still have access to `outerVariable` because of where it was **declared**.
+
+---
+
+### Why Lexical Scoping is Important
+Lexical scoping enables **closures**, where inner functions can "remember" variables from their lexical (outer) scope even after the outer function has finished executing.
+
+```javascript
+function makeCounter() {
+    let count = 0;
+
+    return function () {
+        count++;
+        console.log(count);
+    };
+}
+
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2
+```
+
+Here, the returned function keeps a reference to `count` because of lexical scoping.
+
+In summary, **lexical** in lexical scoping relates to **how the code is written** and determines variable accessibility based on **where functions are declared in the code hierarchy**, not where they are executed.
+
+## Understanding ReferenceError vs. TypeError in JavaScript
+
+I got a very interesting paragraph from `You Don't Know JS: Scope & Closures` by Kyle Simpson:
+
+`ReferenceError is scope resolution-failure related, whereas TypeEr
+ror implies that scope resolution was successful, but that there was an
+illegal/impossible action attempted against the result.`
+
+1. **`ReferenceError`**:  
+   This error occurs when a variable is not defined in the accessible scope. It means JavaScript could not resolve the identifier during scope resolution.  
+
+   **Example**:
+   ```javascript
+   console.log(x); // ReferenceError: x is not defined
+   ```
+   In this case, JavaScript tried to resolve `x` in the current and parent scopes, but it couldn't find it anywhere.
+
+2. **`TypeError`**:  
+   This error happens when a variable or object exists and was resolved successfully in the scope, but an illegal or invalid operation was attempted with it.  
+
+   **Example**:
+   ```javascript
+   let obj = null;
+   console.log(obj.property); // TypeError: Cannot read property 'property' of null
+   ```
+   Here, `obj` is defined (so no `ReferenceError`), but you are trying to access a property of `null`, which is not allowed.
+
+### Key Takeaway:
+- **`ReferenceError`**: The identifier itself couldn't be found.
+- **`TypeError`**: The identifier was found, but the operation on it was invalid. 
+
+Understanding these distinctions can significantly help in debugging JavaScript programs.
+
+## Behavior of Unfulfilled RHS and LHS References in JavaScript
+
+I got a very interesting paragraph from `You Don't Know JS: Scope & Closures` by Kyle Simpson:
+
+`Unfulfilled RHS references result in ReferenceErrors being thrown.
+Unfulfilled LHS references result in an automatic, implicitly created
+global of that name (if not in Strict Mode), or a ReferenceError (if in
+Strict Mode).`
+
+### 1. **RHS (Right-Hand Side) Reference:**
+An RHS reference occurs when you attempt to **retrieve the value** of a variable.
+
+- **Unfulfilled RHS Reference**:  
+  If the variable doesn't exist in the accessible scope chain, **`ReferenceError`** is thrown.  
+
+  **Example:**
+  ```javascript
+  console.log(x); // ReferenceError: x is not defined
+  ```
+  - JavaScript attempts to "read" the value of `x`, but it doesn't exist.
+
+---
+
+### 2. **LHS (Left-Hand Side) Reference:**
+An LHS reference occurs when you attempt to **assign a value** to a variable.
+
+- **Unfulfilled LHS Reference (Non-Strict Mode):**  
+  If the variable does not exist in the scope, JavaScript **implicitly creates a global variable** with that name.  
+
+  **Example (Non-Strict Mode):**
+  ```javascript
+  function foo() {
+      y = 10; // Creates a global variable 'y' implicitly
+  }
+  foo();
+  console.log(y); // 10
+  ```
+  This behavior is a legacy feature of JavaScript and is considered bad practice because it can lead to unexpected bugs.
+
+- **Unfulfilled LHS Reference (Strict Mode):**  
+  In **Strict Mode**, JavaScript enforces stricter rules. If you try to assign to a variable that is not declared, it throws a **`ReferenceError`** instead of implicitly creating a global variable.  
+
+  **Example (Strict Mode):**
+  ```javascript
+  "use strict";
+  function foo() {
+      y = 10; // ReferenceError: y is not defined
+  }
+  foo();
+  ```
+
+---
+
+### Why Does This Distinction Matter?
+- **RHS references** deal with retrieving values, while **LHS references** deal with creating or assigning them.  
+- In modern JavaScript, **Strict Mode** is strongly recommended to avoid accidental global variable creation with unfulfilled LHS references.
+
+### Summary:
+- **RHS unfulfilled reference**: Throws `ReferenceError` because the variable cannot be resolved.
+- **LHS unfulfilled reference**:  
+  - Non-Strict Mode: Creates an implicit global variable.  
+  - Strict Mode: Throws `ReferenceError`.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
