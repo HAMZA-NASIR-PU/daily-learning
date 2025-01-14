@@ -2230,8 +2230,16 @@ func.f1();
 func.f2();
 func.f5(200);
 func.f3();
-func.f4();s
+func.f4();
 ```
+
+## Javascript Closure best Article
+
+https://www.codeguage.com/courses/js/functions-closures
+
+## Javascript Roadmap
+
+https://roadmap.sh/javascript
 
 ## Difference between Observables and Promises
 
