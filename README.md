@@ -2057,6 +2057,87 @@ The principle of least privilege (PoLP) is an information security concept which
 
 TurboFan is one of V8’s optimizing compilers leveraging a concept called “Sea of Nodes”.
 
+## JavaScript Shadowing Concept
+The ability of a variable declared with `let` or `var` to shadow another variable depends on their **scope**. Here's a detailed explanation:
+
+
+### 1. **Can a `let` variable shadow a `var` variable?**
+Yes, a `let` variable can shadow a `var` variable if they are in different scopes. For example:
+
+```javascript
+var x = 10; // Global scope
+
+function example() {
+    let x = 20; // Local (block) scope shadows the global `x`
+    console.log(x); // 20
+}
+
+example();
+console.log(x); // 10
+```
+
+**Key Points**:
+- The `let` variable inside the function or block scope shadows the `var` variable in the outer/global scope.
+- The `var` variable remains accessible outside the block or function where `let` is defined.
+
+
+### 2. **Can a `var` variable shadow a `let` variable?**
+Yes, a `var` variable can shadow a `let` variable if they are in different scopes. However, this is less common and can create confusing behavior.
+
+```javascript
+let y = 30; // Global scope
+
+function example() {
+    var y = 40; // Local (function) scope shadows the global `y`
+    console.log(y); // 40
+}
+
+example();
+console.log(y); // 30
+```
+
+**Key Points**:
+- The `var` variable inside the function shadows the `let` variable in the outer/global scope.
+- Outside the function, the `let` variable remains unaffected.
+
+
+### 3. **Block Scope vs. Function Scope**
+- Variables declared with `let` are block-scoped. They only exist within the block `{}` where they are declared.
+- Variables declared with `var` are function-scoped. They are scoped to the nearest function or global context.
+
+Example with block scope:
+
+```javascript
+var z = 50;
+
+if (true) {
+    let z = 60; // Block scope shadows the outer `var` z
+    console.log(z); // 60
+}
+
+console.log(z); // 50
+```
+
+
+### 4. **Temporal Dead Zone**
+When using `let`, it’s important to note that a **Temporal Dead Zone (TDZ)** exists, during which the variable cannot be accessed before its declaration. This is not true for `var`.
+
+Example:
+
+```javascript
+console.log(a); // undefined (var is hoisted)
+var a = 10;
+
+console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 20;
+```
+
+
+### Conclusion
+- A `let` variable can shadow a `var` variable, and vice-versa, depending on their scope.
+- `let` has block scope, while `var` has function scope.
+- Be cautious when mixing `let` and `var` as it can lead to confusing and error-prone code.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
