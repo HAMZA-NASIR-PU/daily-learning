@@ -2053,6 +2053,10 @@ foo();
 
 The principle of least privilege (PoLP) is an information security concept which maintains that a user or entity should only have access to the specific data, resources and applications needed to complete a required task.
 
+## TurboFan
+
+TurboFan is one of V8’s optimizing compilers leveraging a concept called “Sea of Nodes”.
+
 ## Difference between Observables and Promises
 
 https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables
