@@ -2226,12 +2226,16 @@ function myLoop () {
 
 var func = myLoop();
 
-func.f1();
-func.f2();
+func.f1(); //3
+func.f2(); //3
 func.f5(200);
-func.f3();
-func.f4();
+func.f3(); // 200
+func.f4(); // 200
 ```
+
+### Why f3 and f4 print 200 ?
+
+This is due to the concept of closure. All f1, f2, f3, f4 and f5 share the same lexical scope. When there is a change occur due to one function, then all other functions will see it due to shared lexical scope.
 
 ## ✨ Mastering JavaScript: Implementing Debounce for Efficient Event Handling 🚀
 
