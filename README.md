@@ -2233,6 +2233,79 @@ func.f3();
 func.f4();
 ```
 
+## ✨ Mastering JavaScript: Implementing Debounce for Efficient Event Handling 🚀
+
+Debouncing is a programming technique used to control how often a particular function is executed. It's especially useful in scenarios where a function might be called multiple times in quick succession. This is commonly seen with events like window resizing, scrolling, or key presses, where you only want the function to run once after the action completes.
+
+Example Use Case: Consider a text input field where you want to send an API request as the user types. Without debouncing, a request might be sent with every keystroke, potentially overwhelming the server. By using a debounce function, you can ensure the API call is made only after the user has stopped typing for a specific duration (e.g., 300 milliseconds).
+
+### How Debounce Works:
+
+- A debounce function takes a function and a delay in milliseconds as arguments.
+- When the debounced function is called, it waits for the specified delay.
+- If another call to the debounced function is made within this delay, the timer resets.
+- The original function is only executed after the delay period passes since the last call.
+
+### How to Implement
+
+1. **Define a Function:** Create a function called `debounce` that will take two parameters: the function you want to execute (`func`) and the delay period in milliseconds (`delay`).
+
+2. **Manage the Timeout:** Inside the `debounce` function, use a variable (`timeoutId`) to keep track of the timeout. This ensures you can reference and clear it anytime the debounced function is called again.
+
+3. **Return a Closure:** The `debounce` function returns a new function. This function:
+   - Clears the existing timeout using `clearTimeout(timeoutId)`.
+   - Starts a new timer using `setTimeout`, scheduling the execution of `func` after the specified delay.
+   - If the function is called again before the delay is over, it cancels the previous timeout and resets the delay.
+
+4. **Execute with Delay:** Once the delay period passes without another call, the original function (`func`) is executed with the context and arguments that were provided in the last call.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example</title>
+</head>
+
+<body>
+    <input type="text" id="search-input" placeholder="Type to search..." />
+
+    <script>
+        // Debounce function
+        function debounce(func, delay) {
+            let timeoutId; // Variable to store the timeout ID
+            return function (...args) { // Returning a function
+                clearTimeout(timeoutId); // Clear previous timeout
+                timeoutId = setTimeout(() => { // Set a new timeout
+                    func.apply(this, args); // Execute the function with the given context and arguments
+                }, delay);
+            };
+        }
+
+        // Function to simulate fetching search results
+        function fetchSearchResults(query) {
+            console.log(`Fetching results for: ${query}`);
+            // Imagine this function makes an API call to fetch results
+        }
+
+        // Debounced version of the fetchSearchResults function
+        const debouncedFetch = debounce(fetchSearchResults, 500);
+
+        // Event listener for the search input
+        document.getElementById('search-input').addEventListener('input', (event) => {
+            // Call the debounced function with the current input value as the query
+            debouncedFetch(event.target.value);
+        });
+    </script>
+</body>
+
+</html>
+```
+
+In a nutshell, debounce ensures that the target function is not called too frequently and only executes after a specified "quiet" period.
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
