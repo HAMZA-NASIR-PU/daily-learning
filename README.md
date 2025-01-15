@@ -2306,6 +2306,15 @@ Example Use Case: Consider a text input field where you want to send an API requ
 
 In a nutshell, debounce ensures that the target function is not called too frequently and only executes after a specified "quiet" period.
 
+## Very crucial Line that clears all your doubts regarding the Interface in Java
+
+https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html
+
+According to java docs :
+`In the Java programming language, an interface is a reference type, similar to a class, that can contain only constants, method signatures (abstract method), default methods, static methods, and nested types. Method bodies exist only for default methods and static methods. Interfaces cannot be instantiated—they can only be implemented by classes or extended by other interfaces.`
+
+Default methods are defined with the default modifier, and static methods with the static keyword. All abstract, default, and static methods in an interface are implicitly public, so you can omit the public modifier.
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
