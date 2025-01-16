@@ -2321,6 +2321,26 @@ Default methods are defined with the default modifier, and static methods with t
 
 ## Some Important points related to Javascript Closures
 
+- The engine checks if there is at least one reference to the local environment of a function exiting, outside the function. If there is, the local environment is not garbage-collected.
+- 
+## Environment Record in Javascript
+
+An Environment Record in JavaScript is an abstract concept used by the JavaScript engine to manage the execution context of code. It's part of the underlying engine implementation of how variable scope and context are managed.
+
+Here’s a simple breakdown:
+
+1. **Role**: Environment Records keep track of the bindings (associations between variable names and values) within a particular execution context. They are created for functions, blocks, and the global scope.
+
+2. **Types of Environment Records**:
+   - **Declarative Environment Record**: Used for functions, blocks, and other declarative code structures, holding variables, constants, function arguments, and other declarations.
+   - **Object Environment Record**: Often used for global variables, where bindings are associated with properties of an object, like the `window` object in browsers.
+
+3. **Structure**: An Environment Record doesn’t exist as a directly accessible object like other objects in JavaScript. Instead, it is part of the execution context and used internally by the JavaScript engine.
+
+4. **Closures**: Environment Records play a crucial role in the behavior of closures, as they allow a function to remember the variables outside of its immediate scope even after that function has executed.
+
+In essence, Environment Records are a behind-the-scenes mechanism that the JavaScript engine uses to manage variable scope, track values, and handle functions, which are critical components to ensure the correctness of JavaScript execution.
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
