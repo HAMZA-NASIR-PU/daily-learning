@@ -2319,6 +2319,8 @@ According to java docs :
 
 Default methods are defined with the default modifier, and static methods with the static keyword. All abstract, default, and static methods in an interface are implicitly public, so you can omit the public modifier.
 
+## Some Important points related to Javascript Closures
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
