@@ -2322,7 +2322,11 @@ Default methods are defined with the default modifier, and static methods with t
 ## Some Important points related to Javascript Closures
 
 - The engine checks if there is at least one reference to the local environment of a function exiting, outside the function. If there is, the local environment is not garbage-collected.
-- 
+- A function along with its lexical environment is collectively called a closure.
+- The term 'lexical' simply means 'source code' or in other words, 'relating to the text of a program'.
+- The lexical environment for a function `f` simply refers to the environment enclosing that function's definition in the source code.
+- The lexical environment of a function can contain multiple environments.
+  
 ## Environment Record in Javascript
 
 An Environment Record in JavaScript is an abstract concept used by the JavaScript engine to manage the execution context of code. It's part of the underlying engine implementation of how variable scope and context are managed.
