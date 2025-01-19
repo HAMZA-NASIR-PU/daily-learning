@@ -2345,6 +2345,162 @@ Here’s a simple breakdown:
 
 In essence, Environment Records are a behind-the-scenes mechanism that the JavaScript engine uses to manage variable scope, track values, and handle functions, which are critical components to ensure the correctness of JavaScript execution.
 
+## JavaScript Interview Prep: Functions, Closures, Currying
+
+### Q1)What is function declaration ?
+
+```javascript
+function square(num) {
+    return num * num;
+}
+```
+
+### Q2)What is function expression ?
+
+```javascript
+// This function doesn't have a name, hence this is an anonymous function
+const square = function(num) {
+    return num * num;
+}
+```
+
+### Q3)What are First-class function ?
+
+```javascript
+function square(num) {
+    return num * num;
+}
+
+function displaySquare(fn, num) {
+    console.log("Square of " + num + " is:" + fn(num));
+}
+
+displaySquare(square, 101);
+```
+
+### Q4)What is Immediately Invoked Function Expression (IIFE) ?
+
+```javascript
+console.log(function square(num) {
+    return num * num;
+}(10))
+```
+
+### Q5)What is IIFE ? - O/P based question
+
+```javascript
+// Also there is cocept of closure, and currying.
+(function(x) {
+    return (function(y) {
+        console.log(x);
+    })(2)
+})(1)
+```
+
+### Q6) What is Scope ?
+
+```javascript
+// The following variables are defined in the global scope
+const num1 = 20;
+const num2 = 3;
+const name = "Chamakh";
+
+// This function is defined in the global scope
+function multiply() {
+  return num1 * num2;
+}
+
+console.log(multiply()); // 60
+
+// A nested function example
+function getScore() {
+  const num1 = 2;
+  const num2 = 3;
+
+  function add() {
+    return `${name} scored ${num1 + num2}`;
+  }
+
+  return add();
+}
+
+console.log(getScore()); // "Chamakh scored 5"
+```
+
+### Q7) What is Function Scope ?  - O/P based question
+
+```javascript
+for(var i = 0; i < 5; i++) {
+    setTimeout(() => {
+        console.log(i)
+    }, i * 1000);
+}
+```
+
+### Q8) What is Function Hoisting ?
+
+```javascript
+func(); // Work fine
+
+function func() {
+    console.log("HELLO");
+}
+```
+
+```javascript
+console.log(x); // undefined
+var x = 10;
+```
+
+### Q9) What is Function Hoisting ? - O/P based Question (Tricky Question)
+
+```javascript
+var x = 21;
+
+var fun = function () {
+    console.log(x);
+    var x = 20;
+}
+
+fun();
+```
+
+### Q10) Params vs Arguments
+
+```javascript
+function square(num) // Param
+{ 
+    return num * num;
+}
+square(10); // Argument
+```
+
+### Q10) Params vs Arguments -- Concept of Spread and Rest Operator
+
+```javascript
+function multiply(...nums) // rest operator
+{
+   return nums[0] * nums[1];
+}
+var nums = [5, 6];
+multiply(...nums); // spread operator
+```
+
+### Q11) Params vs Arguments -- Concept of Spread and Rest Operator
+
+The following fucntin give syntax error. ==> Rest operator should be at the end of the function argument list.
+```javascript
+const fn = (a, ...num, x, y) {
+    console.log(x + " " + y);
+}
+
+fn(5, 6, 3, 7);
+```
+
+### Q12) What are callback function ?
+
+map, filter, reduce, setTimeout, Event Listeners
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
