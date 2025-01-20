@@ -2357,6 +2357,87 @@ Yes, addEventListener() allows you to attach multiple event handlers to the same
 ### Does onclick overwrite existing event handlers?
 Yes, onclick overwrites any existing event handlers when you assign a new function to it.
 
+## What is HTMLElement in Web API ?
+
+
+The **`HTMLElement`** is a core part of the **Web API** and represents any **HTML element** in the DOM (Document Object Model). It is the base class for all HTML element types, such as `<div>`, `<span>`, `<button>`, and custom elements.
+
+When you create or manipulate HTML elements in JavaScript, they are often instances of the `HTMLElement` class or one of its subclasses.
+
+---
+
+### **Key Features of `HTMLElement`:**
+
+1. **Inheritance:**
+   - `HTMLElement` is a subclass of the `Element` interface, which itself is a subclass of `Node`.
+   - This hierarchy means that `HTMLElement` inherits properties and methods from `Element`, `Node`, and `EventTarget`.
+
+   ```plaintext
+   EventTarget → Node → Element → HTMLElement → Specialized HTML Elements
+   ```
+
+   For example:
+   - `<div>`: Instance of `HTMLDivElement`, which extends `HTMLElement`.
+   - `<img>`: Instance of `HTMLImageElement`, which extends `HTMLElement`.
+
+2. **Creating Custom HTML Elements:**
+   `HTMLElement` serves as the base class when creating custom elements using **Web Components**.
+
+   ```javascript
+   class MyCustomElement extends HTMLElement {
+       constructor() {
+           super(); // Call the parent constructor
+           console.log('Custom element created!');
+       }
+   }
+   customElements.define('my-element', MyCustomElement);
+   ```
+
+3. **Commonly Used Properties:**
+   `HTMLElement` defines several properties you can use to interact with or manipulate elements:
+   - **`innerHTML`**: Gets or sets the HTML content inside the element.
+   - **`outerHTML`**: Gets or sets the HTML of the element itself and its descendants.
+   - **`style`**: Access the inline styles of the element.
+   - **`className`**: Gets or sets the `class` attribute of the element.
+   - **`id`**: Gets or sets the `id` attribute of the element.
+   - **`hidden`**: Hides or shows the element.
+   - **`dataset`**: Access custom data attributes (`data-*`).
+
+4. **Commonly Used Methods:**
+   - **`focus()`**: Brings focus to the element.
+   - **`click()`**: Simulates a mouse click on the element.
+   - **`blur()`**: Removes focus from the element.
+
+5. **Event Handling:**
+   - Being a subclass of `EventTarget`, `HTMLElement` can listen for events like `click`, `mouseenter`, `keydown`, etc.
+
+   ```javascript
+   const button = document.querySelector('button');
+   button.addEventListener('click', () => alert('Button clicked!'));
+   ```
+
+---
+
+### **Practical Example:**
+
+```javascript
+// Select an existing element
+const div = document.querySelector('div');
+
+// Access HTMLElement properties
+div.innerHTML = 'Hello, World!'; // Set HTML content
+div.style.color = 'blue';        // Change text color
+div.className = 'highlight';     // Add a CSS class
+
+// Create a new element dynamically
+const button = document.createElement('button');
+button.textContent = 'Click Me';
+button.addEventListener('click', () => alert('Button clicked!'));
+
+// Append the new button to the div
+div.appendChild(button);
+```
+
 
 ## JavaScript Interview Prep: Functions, Closures, Currying
 
