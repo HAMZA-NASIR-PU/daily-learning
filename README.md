@@ -2345,6 +2345,19 @@ Here’s a simple breakdown:
 
 In essence, Environment Records are a behind-the-scenes mechanism that the JavaScript engine uses to manage variable scope, track values, and handle functions, which are critical components to ensure the correctness of JavaScript execution.
 
+## Difference between addEventListener and onclick in JavaScript
+
+The `addEventListener()` method of the `EventTarget` interface sets up a function that will be called whenever the specified event is delivered to the target.
+
+While addEventListener() allows multiple event listeners and better control over event propagation, onclick is limited to a single event handler and gets overwritten.
+
+### Can addEventListener handle multiple events on the same element?
+Yes, addEventListener() allows you to attach multiple event handlers to the same element without overwriting previous handlers.
+
+### Does onclick overwrite existing event handlers?
+Yes, onclick overwrites any existing event handlers when you assign a new function to it.
+
+
 ## JavaScript Interview Prep: Functions, Closures, Currying
 
 ### Q1)What is function declaration ?
