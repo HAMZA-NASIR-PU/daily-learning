@@ -2591,9 +2591,217 @@ const fn = (a, ...num, x, y) {
 fn(5, 6, 3, 7);
 ```
 
-### Q12) What are callback function ?
+### Q12) What are callback functions ?
+Can you give example where callback functions are used.
+map, filter, reduce, setTimeout, Event Listeners (addEventListener)
 
-map, filter, reduce, setTimeout, Event Listeners
+### Q13) What are arrow functions ?
+
+Arrow functions in JavaScript are a more concise way to write function expressions. They were introduced in ES6 (ECMAScript 2015) and have a syntax that is shorter and easier to understand, especially for simple and one-liner functions.
+
+Here are some key features of arrow functions:
+
+1. **Syntax**: Arrow functions use the `=>` syntax, which makes them more concise. For example:
+
+   ```javascript
+   // Regular function expression
+   const add = function(a, b) {
+       return a + b;
+   };
+
+   // Arrow function
+   const add = (a, b) => a + b;
+   ```
+
+2. **Implicit Returns**: If the function body contains only a single expression, the arrow function can omit the `return` keyword and the curly braces.
+
+   ```javascript
+   const square = x => x * x;
+   ```
+
+3. **Lexical `this`**: Arrow functions do not have their own `this` context but inherit `this` from the enclosing scope. This makes them particularly useful in situations where you want to preserve the context of `this`, such as within callback functions.
+
+   ```javascript
+   function Person() {
+       this.age = 0;
+       setInterval(() => {
+           this.age++; // `this` refers to the Person object
+       }, 1000);
+   }
+
+   const person = new Person();
+   ```
+
+4. **No `arguments` object**: Arrow functions do not have their own `arguments` object. If you need to access the `arguments` object, you must use a regular function.
+
+5. **Usage**: Arrow functions are commonly used in array methods like `map`, `filter`, and `reduce`, as well as in event handlers and promise chaining.
+
+#### Question
+
+```javascript
+let user = {
+    username: "JOHN DOE",
+    f1: () => {
+        console.log("f1 = " + this.username);
+    },
+    f2() {
+        console.log("f2 = " + this.username);
+    }
+};
+
+user.f1();
+user.f2();
+```
+
+### Q14) What is a closure ?
+
+```javascript
+let count = 0;
+(function printCount() {
+    if(count === 0) {
+        // let is block-scoped.
+        let count = 1;
+        console.log(count); // 1
+    }
+    console.log(count); // 0
+})();
+```
+
+```javascript
+function createBase(base) {
+    return function(num) {
+        return base + num;
+    }
+}
+
+var addSix = createBase(6);
+console.log(addSix(10));
+console.log(addSix(21));
+```
+
+##### Time Optimization
+
+```javascript
+function find() {
+    let a = [];
+    for(let i = 0; i < 1000000; i++) {
+        a[i] = i * i;
+    }
+    
+    return function(index) {
+        console.log(a[index]);
+    }
+}
+const closure = find();
+closure(50);
+closure(120);
+```
+
+##### How would you use closure to create a private counter ?
+
+```javascript
+function counter() {
+    var _counter = 0;
+    
+    function add(increment) {
+        _counter += increment;
+    }
+    
+    function getCounter() {
+        return _counter;
+    }
+    
+    return {add, getCounter };
+}
+
+var c = counter();
+c.add(100);
+console.log(c.getCounter());
+c.add(200);
+console.log(c.getCounter());
+```
+
+##### What is a Module Pattern
+
+The module pattern in JavaScript is a structural design pattern used to encapsulate code into separate, independent units with private and public APIs. It helps organize and structure code, making it more readable, reusable, and maintainable. By using the module pattern, you can create private variables and functions that are not accessible from the outside, while exposing only the parts of the module you want to be publicly available.
+
+### Key Features of the Module Pattern
+
+1. **Encapsulation**: The module pattern allows you to encapsulate private data and functions, exposing only those you choose to be part of the module's public API.
+
+2. **Scope**: It leverages JavaScript's function scope to create private members. The module is usually defined as an IIFE (Immediately Invoked Function Expression) that returns an object with the public interface.
+
+3. **Example Usage**:
+
+   ```javascript
+   const myModule = (function() {
+       // Private variables and functions
+       let privateVariable = 'I am private';
+
+       function privateFunction() {
+           console.log(privateVariable);
+       }
+
+       // Public API
+       return {
+           publicMethod: function() {
+               console.log('I am a public method');
+               privateFunction();
+           },
+           anotherPublicMethod: function() {
+               console.log('Another public method');
+           }
+       };
+   })();
+
+   myModule.publicMethod(); // Outputs: I am a public method
+                            //          I am private
+   // myModule.privateFunction(); // Not accessible
+   ```
+
+4. **Advantages**:
+   - **Namespace Management**: Helps avoid polluting the global namespace by encapsulating code within modules.
+   - **Data Privacy**: Secures certain data and logic from being accessed or modified from outside the module.
+
+5. **Variants**: The revealing module pattern is a variant where functions and variables are defined within the closure and assigned to the returned object to make the API more clear.
+
+The module pattern is foundational for modern JavaScript application architectures, often preceding modules in ECMAScript 6 (ES6).
+
+##### Make this run only once
+
+A function that runs only once can be created using a technique called "function wrapping". This involves defining a function and using a closure to ensure that it can only be executed one time. Here's a simple example of how you can achieve this:
+
+```javascript
+function once(fn) {
+    let hasBeenCalled = false;
+
+    return function(...args) {
+        if (!hasBeenCalled) {
+            hasBeenCalled = true;
+            return fn(...args);
+        }
+    };
+}
+
+// Usage
+const initialize = once(() => {
+    console.log('This will run only once');
+});
+
+// Test
+initialize(); // Output: This will run only once
+initialize(); // No output
+```
+
+### How It Works
+
+- **Closure**: The `once` function returns another function that maintains a private `hasBeenCalled` variable. This variable is part of the closure and retains its value between invocations.
+
+- **Condition Check**: Each time the returned function is called, it checks if `hasBeenCalled` is `false`. If so, it calls the original function and sets `hasBeenCalled` to `true`.
+
+- **Subsequent Calls**: On subsequent calls, since `hasBeenCalled` is now `true`, the function does nothing.
+
+This pattern can be particularly useful in scenarios where you need to ensure that an initialization function or event handler is executed only once.
 
 ## Javascript Closure best Article
 
