@@ -2803,6 +2803,8 @@ initialize(); // No output
 
 This pattern can be particularly useful in scenarios where you need to ensure that an initialization function or event handler is executed only once.
 
+### Learn patterns in frontend development like closing a sidebar by clicking outside of the sidebar.
+
 ## Javascript Closure best Article
 
 https://www.codeguage.com/courses/js/functions-closures
