@@ -2803,7 +2803,36 @@ initialize(); // No output
 
 This pattern can be particularly useful in scenarios where you need to ensure that an initialization function or event handler is executed only once.
 
+## Close the sidebar by checking the click happended outside of the sidebar
+
+```javascript
+var sidebarOpen = false;
+var sidebar = document.getElementById("sidebar");
+var openMenu = document.getElementById("openMenu");
+function openSidebar() {
+    if (!sidebarOpen) {
+        sidebar.classList.add("sidebar-responsive");
+        sidebarOpen = true;
+    }
+}
+
+function closeSidebar() {
+    if (sidebarOpen) {
+        sidebar.classList.remove("sidebar-responsive");
+        sidebarOpen = false;
+    }
+}
+
+document.addEventListener('click', function (event) {
+    if (!sidebar.contains(event.target) && !openMenu.contains(event.target)) {
+        // console.log("Clicked outside of the sidebar.");
+        sidebar.classList.remove("sidebar-responsive");
+        sidebarOpen = false;
+    }
+});
+```
 ### Learn patterns in frontend development like closing a sidebar by clicking outside of the sidebar.
+
 
 ## Javascript Closure best Article
 
