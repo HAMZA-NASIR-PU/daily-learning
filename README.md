@@ -2902,3 +2902,7 @@ https://stackoverflow.com/questions/37364973/what-is-the-difference-between-prom
 
 Observables are called "lazy" because they only begin to execute their logic when a subscriber actively subscribes to them, meaning no actions are taken until someone is actively listening for data, unlike a Promise which starts executing immediately regardless of whether anyone is listening; this allows for efficient data handling and building complex data pipelines through chaining operators before actual execution occurs.
 
+
+## Derivation of Area of Triangle
+https://wumbo.net/examples/derive-area-of-triangle-formula/
+
