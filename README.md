@@ -2884,6 +2884,9 @@ Here’s how it works:
 
 ### Learn patterns in frontend development like closing a sidebar by clicking outside of the sidebar.
 
+## Best Javascript Article
+
+https://medium.com/no-nonsense-backend/8-javascript-performance-tips-i-discovered-after-years-of-coding-56ab5fae43af
 
 ## Javascript Closure best Article
 
