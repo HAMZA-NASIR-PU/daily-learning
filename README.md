@@ -3056,6 +3056,56 @@ List<Product> allProducts = productRepository.findAll(allProductsSpec);
 
 This modification emphasizes the use of Specifications not only for dynamic filtering but also for handling scenarios where no filters are applied, allowing your students to see how to fetch all data when necessary.
 
+## 🚀 Implementing Two Interfaces with Same Method Name but Different Parameter Types in Java 21 🛠️
+
+```java
+interface InterfaceA {
+    void doSomething(int x);
+}
+
+interface InterfaceB {
+    void doSomething(String x);
+}
+
+
+class MyClass implements InterfaceA, InterfaceB {
+
+    // Implementation for the method from InterfaceA
+    @Override
+    public void doSomething(int x) {
+        System.out.println("doSomething with int: " + x);
+    }
+
+    // Implementation for the method from InterfaceB
+    @Override
+    public void doSomething(String x) {
+        System.out.println("doSomething with String: " + x);
+    }
+    
+}
+
+class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        
+        obj.doSomething(10);        // Calls doSomething(int)
+        obj.doSomething("Hello");   // Calls doSomething(String)
+    }
+}
+```
+
+### Example 2
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+public interface EmployeeRepository extends JpaRepository<Employee, Integer>, JpaSpecificationExecutor<Employee> {}
+```
+
+- `org.springframework.data.jpa.repository.JpaSpecificationExecutor` => `List<T> findAll(Specification<T> spec);` `Page<T> findAll(Specification<T> spec, Pageable pageable)` `List<T> findAll(Specification<T> spec, Sort sort);`
+- `org.springframework.data.jpa.repository.JpaSpecificationExecutor` => `<S extends T> List<S> findAll(Example<S> example);` `<S extends T> List<S> findAll(Example<S> example, Sort sort);`
+ 
+
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
 
