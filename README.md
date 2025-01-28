@@ -2988,7 +2988,7 @@ public class EmployeeService {
 - "Can you explain a scenario where you've optimized a complex dynamic query using `JpaSpecificationExecutor`?"  
 - "How would you compare it with QueryDSL or Criteria API for dynamic query building?"
 
-## Building Dynamic Queries with Spring Data JPA Specifications: A Flexible Approach to Data Retrieval**
+## Building Dynamic Queries with Spring Data JPA Specifications: A Flexible Approach to Data Retrieval
 
 #### Example: Dynamic Search for Products in an E-Commerce Application
 
