@@ -3104,8 +3104,15 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>, Jp
 
 - `org.springframework.data.jpa.repository.JpaSpecificationExecutor` => `List<T> findAll(Specification<T> spec);` `Page<T> findAll(Specification<T> spec, Pageable pageable)` `List<T> findAll(Specification<T> spec, Sort sort);`
 - `org.springframework.data.jpa.repository.JpaSpecificationExecutor` => `<S extends T> List<S> findAll(Example<S> example);` `<S extends T> List<S> findAll(Example<S> example, Sort sort);`
- 
 
+## Automating Row Duplication and Timestamp Updates in MySQL
+
+```sql
+INSERT INTO `poc-school`.tenure (created_on, some_column, some_date, some_column, some_column, some_column, some_date, some_column, updated_on, foreign_key_id)
+SELECT NOW(), deleted, end_date, freeze, pinned, position, start_date, title, NOW(), 2
+FROM `my-schema`.table
+WHERE foreign_key_id = 1;
+```
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
 
