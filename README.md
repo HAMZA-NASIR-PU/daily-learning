@@ -3113,6 +3113,12 @@ SELECT NOW(), deleted, end_date, freeze, pinned, position, start_date, title, NO
 FROM `my-schema`.table
 WHERE foreign_key_id = 1;
 ```
+
+## Inline, Block, and inline-block in CSS
+
+- No margins, width, height, have not effect on inline HTML elements. 
+
+
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
 
