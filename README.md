@@ -3120,6 +3120,9 @@ WHERE foreign_key_id = 1;
 - What happens when you need inline elements that need margins and paddings ? Here comes `inline-block`
 - `img` is an inline element, but we can also apply width property on it.
 
+## Crucial CSS Articles
+
+https://stackoverflow.com/questions/28353625/why-does-percentage-width-work-even-if-no-explicit-width-value-given-for-contain/28354270#28354270
 
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
