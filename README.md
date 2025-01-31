@@ -3153,6 +3153,8 @@ WHERE foreign_key_id = 1;
 
 The reason the two div elements are stacking on top of each other rather than appearing side by side is that div elements are block-level elements by default. Block-level elements take up the full width of the container and will stack vertically.
 
+## Why CSS `overflow` property is crucial in creating dropdowns ? 
+
 ## Crucial CSS Articles
 
 https://stackoverflow.com/questions/28353625/why-does-percentage-width-work-even-if-no-explicit-width-value-given-for-contain/28354270#28354270
