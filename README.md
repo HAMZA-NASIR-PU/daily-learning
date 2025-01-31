@@ -3118,6 +3118,7 @@ WHERE foreign_key_id = 1;
 
 - No margins, width, height, have not effect on inline HTML elements. font-size have effect.
 - What happens when you need inline elements that need margins and paddings ? Here comes `inline-block`
+- `img` is an inline element, but we can also apply width property on it.
 
 
 ## Derivation of Area of Triangle
