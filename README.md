@@ -3117,6 +3117,7 @@ WHERE foreign_key_id = 1;
 ## Inline, Block, and inline-block in CSS
 
 - No margins, width, height, have not effect on inline HTML elements. font-size have effect.
+- What happens when you need inline elements that need margins and paddings ? Here comes `inline-block`
 
 
 ## Derivation of Area of Triangle
