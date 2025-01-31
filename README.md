@@ -3120,6 +3120,39 @@ WHERE foreign_key_id = 1;
 - What happens when you need inline elements that need margins and paddings ? Here comes `inline-block`
 - `img` is an inline element, but we can also apply width property on it.
 
+## Why are my div elements stacking vertically instead of displaying side by side?
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            background-color: red;
+            width: 20%;
+        }
+        .box2{
+            background-color: blue;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">ABC</div>
+    <div class="box2">DEF</div>
+</body>
+</html>
+```
+
+The reason the two div elements are stacking on top of each other rather than appearing side by side is that div elements are block-level elements by default. Block-level elements take up the full width of the container and will stack vertically.
+
 ## Crucial CSS Articles
 
 https://stackoverflow.com/questions/28353625/why-does-percentage-width-work-even-if-no-explicit-width-value-given-for-contain/28354270#28354270
