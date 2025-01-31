@@ -3116,7 +3116,7 @@ WHERE foreign_key_id = 1;
 
 ## Inline, Block, and inline-block in CSS
 
-- No margins, width, height, have not effect on inline HTML elements. 
+- No margins, width, height, have not effect on inline HTML elements. font-size have effect.
 
 
 ## Derivation of Area of Triangle
