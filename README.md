@@ -3159,6 +3159,22 @@ The reason the two div elements are stacking on top of each other rather than ap
 
 https://stackoverflow.com/questions/28353625/why-does-percentage-width-work-even-if-no-explicit-width-value-given-for-contain/28354270#28354270
 
+## How to Check for Foreign Key Constraints and ON DELETE CASCADE in MySQL?
+
+```sql
+SELECT 
+    CONSTRAINT_NAME,
+    TABLE_NAME,
+    REFERENCED_TABLE_NAME,
+    DELETE_RULE
+FROM 
+    INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS
+WHERE 
+    CONSTRAINT_SCHEMA = 'poc-school'
+    AND TABLE_NAME = 'food_category';
+```
+
+
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
 
