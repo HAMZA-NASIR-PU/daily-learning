@@ -3174,6 +3174,11 @@ WHERE
     AND TABLE_NAME = 'food_category';
 ```
 
+## Crucial Udemy Courses to learn in future:
+
+- https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
+- https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/
+- Advanced CSS and Sass: Flexbox, Grid, Animations and More!
 
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
