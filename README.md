@@ -3179,6 +3179,11 @@ WHERE
 - https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#google_vignette
 - https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 
+## Implementing the Outbox Pattern
+- https://www.milanjovanovic.tech/blog/implementing-the-outbox-pattern
+- https://www.milanjovanovic.tech/blog/scaling-the-outbox-pattern?utm_source=LinkedIn&utm_medium=social&utm_campaign=27.01.2025
+- https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
