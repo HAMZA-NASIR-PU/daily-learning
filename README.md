@@ -3174,6 +3174,10 @@ WHERE
     AND TABLE_NAME = 'food_category';
 ```
 
+## Unit of Work in Repository Pattern
+
+- https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#google_vignette
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
