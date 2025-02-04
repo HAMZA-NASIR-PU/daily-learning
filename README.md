@@ -3184,6 +3184,9 @@ WHERE
 - https://www.milanjovanovic.tech/blog/scaling-the-outbox-pattern?utm_source=LinkedIn&utm_medium=social&utm_campaign=27.01.2025
 - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html
 
+## Specification Pattern
+- https://medium.com/@carlosraphael/specification-design-pattern-in-java-8-bac6f5f943bc
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
