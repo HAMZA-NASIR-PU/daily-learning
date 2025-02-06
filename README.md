@@ -3190,6 +3190,126 @@ WHERE
 ## Factory Pattern
 - https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/converters-how-to
 
+## Writing your own Custom JSON Serializer in .NET 6
+
+you can use a **custom serializer** in your C# .NET 6 console application. To do this, you can configure and use the **`System.Text.Json`** serializer (built into .NET) and provide your own custom serialization logic using converters like `JsonConverter`. This gives you the ability to control how specific types are serialized and deserialized.
+
+### Steps to Use a Custom Serializer in a .NET 6 Console Application:
+
+1. **Create a Custom Converter**: You define a custom converter by inheriting from `JsonConverter<T>` where `T` is the type you want to customize the serialization for.
+  
+2. **Register the Custom Converter**: You register the custom converter either globally by passing it to the `JsonSerializerOptions` or apply it to specific properties using the `[JsonConverter]` attribute.
+
+3. **Use `System.Text.Json` for Serialization and Deserialization**: This involves calling `JsonSerializer.Serialize()` and `JsonSerializer.Deserialize()` with the custom options.
+
+### Example of Using a Custom Serializer
+
+Let’s create a custom serializer for a `DateTime` property with a specific format in a .NET 6 Console app:
+
+#### 1. Create a Custom `JsonConverter`:
+```csharp
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+public class CustomDateTimeConverter : JsonConverter<DateTime>
+{
+    private readonly string _format = "yyyy-MM-dd";
+
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        return DateTime.ParseExact(reader.GetString(), _format, null);
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString(_format));
+    }
+}
+```
+
+#### 2. Define a Model:
+```csharp
+public class MyModel
+{
+    public int Id { get; set; }
+
+    // Apply the custom serializer to this property
+    [JsonConverter(typeof(CustomDateTimeConverter))]
+    public DateTime CreatedAt { get; set; }
+}
+```
+
+#### 3. Use the Custom Converter in Serialization/Deserialization:
+```csharp
+using System;
+using System.Text.Json;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var model = new MyModel
+        {
+            Id = 1,
+            CreatedAt = DateTime.Now
+        };
+
+        // Serialize the model to JSON using the custom date format
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+
+        string jsonString = JsonSerializer.Serialize(model, options);
+        Console.WriteLine("Serialized JSON:");
+        Console.WriteLine(jsonString);
+
+        // Deserialize back from JSON
+        var deserializedModel = JsonSerializer.Deserialize<MyModel>(jsonString);
+        Console.WriteLine("\nDeserialized Object:");
+        Console.WriteLine($"Id: {deserializedModel.Id}, CreatedAt: {deserializedModel.CreatedAt}");
+    }
+}
+```
+
+#### Output:
+```json
+Serialized JSON:
+{
+  "id": 1,
+  "createdAt": "2025-02-06"
+}
+
+Deserialized Object:
+Id: 1, CreatedAt: 2025-02-06 00:00:00
+```
+
+### Explanation:
+1. **CustomDateTimeConverter**: This custom converter formats the `DateTime` as `yyyy-MM-dd` during serialization and ensures it can be parsed back during deserialization.
+2. **[JsonConverter] Attribute**: The custom serializer is applied only to the `CreatedAt` property of the `MyModel` class, but it could be applied globally via `JsonSerializerOptions` if needed.
+3. **Serialization/Deserialization**: You use `JsonSerializer.Serialize()` and `JsonSerializer.Deserialize()` with optional formatting options, which makes your console app flexible.
+
+### Using Global Custom Serializer
+Instead of using the `[JsonConverter]` attribute on each model, you can globally apply the converter:
+
+```csharp
+var options = new JsonSerializerOptions
+{
+    WriteIndented = true,
+    Converters =
+    {
+        new CustomDateTimeConverter()
+    }
+};
+
+string jsonString = JsonSerializer.Serialize(model, options);
+```
+
+### Conclusion:
+In your .NET 6 console app, you can easily implement a custom serializer by creating a custom `JsonConverter` and applying it either globally or on a per-property basis. This gives you full control over the JSON serialization and deserialization process.
+
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
