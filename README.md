@@ -3187,6 +3187,9 @@ WHERE
 ## Specification Pattern
 - https://medium.com/@carlosraphael/specification-design-pattern-in-java-8-bac6f5f943bc
 
+## Factory Pattern
+- https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/converters-how-to
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
