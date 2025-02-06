@@ -3309,6 +3309,7 @@ string jsonString = JsonSerializer.Serialize(model, options);
 ### Conclusion:
 In your .NET 6 console app, you can easily implement a custom serializer by creating a custom `JsonConverter` and applying it either globally or on a per-property basis. This gives you full control over the JSON serialization and deserialization process.
 
+## Creating our own custome serializer and apply it on timestamp fields for adding a cooment at the end of the timestamp string in Spring Boot.
 
 ## Crucial Udemy Courses to learn in future:
 
