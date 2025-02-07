@@ -3314,6 +3314,9 @@ In your .NET 6 console app, you can easily implement a custom serializer by crea
 ## Best icons library
 - https://lucide.dev/
 
+## Implement Rate Limiter
+- https://foojay.io/today/token-bucket-rate-limiter-redis-java/
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
