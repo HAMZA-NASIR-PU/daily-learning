@@ -3311,6 +3311,9 @@ In your .NET 6 console app, you can easily implement a custom serializer by crea
 
 ## Creating our own custome serializer and apply it on timestamp fields for adding a cooment at the end of the timestamp string in Spring Boot.
 
+## Best icons library
+- https://lucide.dev/
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
