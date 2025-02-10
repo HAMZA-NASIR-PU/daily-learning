@@ -3317,6 +3317,12 @@ In your .NET 6 console app, you can easily implement a custom serializer by crea
 ## Implement Rate Limiter
 - https://foojay.io/today/token-bucket-rate-limiter-redis-java/
 
+## Role-based Access Control vs Attribute-based Access Control
+
+- https://docs.aws.amazon.com/prescriptive-guidance/latest/saas-multitenant-api-access-authorization/pep.html
+- policy enforcement point (pep)
+- https://www.youtube.com/watch?v=rvZ35YW4t5k&list=LL&index=1
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
