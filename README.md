@@ -3324,6 +3324,7 @@ In your .NET 6 console app, you can easily implement a custom serializer by crea
 - https://www.youtube.com/watch?v=rvZ35YW4t5k&list=LL&index=1
 
 ## Lexical `this` binding
+An arrow function expression (also known as fat arrow function) has a shorter syntax compared to function expressions and lexically binds the this value (does not bind its own this, arguments, super, or new.target). Arrow functions are always anonymous.
 
 ## TypeScript-Only Feature: Explicit `this` Parameter
 
