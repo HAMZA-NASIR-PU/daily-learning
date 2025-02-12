@@ -3328,6 +3328,8 @@ An arrow function expression (also known as fat arrow function) has a shorter sy
 
 ## TypeScript-Only Feature: Explicit `this` Parameter
 
+## Fundamental Counting Principle
+- https://brilliant.org/wiki/fundamental-counting-principle/#:~:text=The%20fundamental%20counting%20principle%20is,perform%20both%20of%20these%20actions.
 
 ## Crucial Udemy Courses to learn in future:
 
