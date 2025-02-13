@@ -3339,6 +3339,128 @@ https://zapier.com/engineering/how-to-build-redux/
 ## Dirty Read in Databases
 A dirty read is a database error that occurs when a transaction reads data that has not yet been committed by another transaction. This can happen when multiple users or processes access the same database simultaneously. 
 
+## Understanding the Diamond Problem using default method in interfaces in Java
+
+```java
+// No Compile Time Error. Works fine
+interface A {
+    default void display() {
+        System.out.println("Display from A");
+    }
+}
+
+interface B extends A {
+    default void display() {
+        System.out.println("Display from B");
+    }
+}
+
+interface C extends A {
+    default void display() {
+        System.out.println("Display from C");
+    }
+}
+
+class D implements B, C {
+   @Override
+   public void display() {
+       A.super.display();
+   }
+}
+
+class Main {
+    public static void main(String[] args) {
+        D obj = new D();
+        obj.display();
+    }
+}
+```
+
+```
+// Compile Time Error: class D inherits unrelated defaults for display() from types B and C
+interface A {
+    default void display() {
+        System.out.println("Display from A");
+    }
+}
+
+interface B extends A {
+    default void display() {
+        System.out.println("Display from B");
+    }
+}
+
+interface C extends A {
+    default void display() {
+        System.out.println("Display from C");
+    }
+}
+
+class D implements B, C {
+}
+
+class Main {
+    public static void main(String[] args) {
+        D obj = new D();
+        obj.display();
+    }
+}
+```
+
+```java
+// Works fine
+interface A {
+    default void display() {
+        System.out.println("Display from A");
+    }
+}
+
+interface B extends A {
+}
+
+interface C extends A {
+}
+
+class D implements B, C {
+}
+
+class Main {
+    public static void main(String[] args) {
+        D obj = new D();
+        obj.display();
+    }
+}
+```
+
+```java
+
+interface A {
+    void display();
+}
+
+interface B extends A {
+}
+
+interface C extends A {
+}
+
+class D implements B, C {
+    @Override
+    public void display() {
+        System.out.println("Class D display");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        D obj = new D();
+        obj.display();
+    }
+}
+```
+
+This is something different than `Diamond Problem in C++`.
+See `https://www.geeksforgeeks.org/diamond-problem-in-cpp/`
 
 ## Crucial Udemy Courses to learn in future:
 
