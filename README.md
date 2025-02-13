@@ -3331,6 +3331,8 @@ An arrow function expression (also known as fat arrow function) has a shorter sy
 ## Fundamental Counting Principle
 - https://brilliant.org/wiki/fundamental-counting-principle/#:~:text=The%20fundamental%20counting%20principle%20is,perform%20both%20of%20these%20actions.
 
+## Hot Observable vs Cold Observable
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
