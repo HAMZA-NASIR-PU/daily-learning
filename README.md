@@ -3336,6 +3336,10 @@ An arrow function expression (also known as fat arrow function) has a shorter sy
 ## Build your own Redux
 https://zapier.com/engineering/how-to-build-redux/
 
+## Dirty Read in Databases
+A dirty read is a database error that occurs when a transaction reads data that has not yet been committed by another transaction. This can happen when multiple users or processes access the same database simultaneously. 
+
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
