@@ -3333,6 +3333,9 @@ An arrow function expression (also known as fat arrow function) has a shorter sy
 
 ## Hot Observable vs Cold Observable
 
+## Build your own Redux
+https://zapier.com/engineering/how-to-build-redux/
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
