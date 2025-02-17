@@ -3462,6 +3462,10 @@ class Main {
 This is something different than `Diamond Problem in C++`.
 See `https://www.geeksforgeeks.org/diamond-problem-in-cpp/`
 
+## Covariant Return Type in Java
+
+https://stackoverflow.com/questions/52238795/methods-with-the-same-signature-but-different-return-type-in-two-interfaces?noredirect=1&lq=1
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
