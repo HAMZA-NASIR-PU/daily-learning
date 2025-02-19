@@ -3466,6 +3466,28 @@ See `https://www.geeksforgeeks.org/diamond-problem-in-cpp/`
 
 https://stackoverflow.com/questions/52238795/methods-with-the-same-signature-but-different-return-type-in-two-interfaces?noredirect=1&lq=1
 
+## Leetcode 268 and 448 Problem and finding soltuions in Events Image Scrapping
+
+```python
+import re
+
+def find_missing_numbers(files_list):
+    # Extract numeric parts from file names
+    numbers = sorted([int(re.search(r'\d+', file).group()) for file in files_list])
+    
+    # Find the full range of numbers
+    full_range = set(range(min(numbers), max(numbers) + 1))
+    
+    # Find the missing numbers by subtracting the existing numbers from the full range
+    missing_numbers = sorted(full_range - set(numbers))
+    
+    return missing_numbers
+
+# Example usage
+missing_numbers = find_missing_numbers(sorted_files_list)
+print(f"Missing numbers: {missing_numbers}")
+```
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
