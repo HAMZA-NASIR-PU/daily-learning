@@ -3488,6 +3488,120 @@ missing_numbers = find_missing_numbers(sorted_files_list)
 print(f"Missing numbers: {missing_numbers}")
 ```
 
+Here’s a complete and **best explanation** of `dataset` in JavaScript using **clear headings and relevant icons**. 🚀  
+
+---
+
+## **📌 Understanding `dataset` and Event Delegation Pattern in JavaScript**
+
+### **1️⃣ What is `dataset`?** 🧐  
+The `dataset` property in JavaScript allows us to **store and retrieve custom data attributes** (`data-*`) from HTML elements dynamically. It’s a part of the **DOM API** and provides a clean way to attach metadata to elements without modifying their IDs or classes.  
+
+🔹 **Syntax:**  
+```js
+element.dataset.propertyName
+```
+Where **`propertyName`** corresponds to the `data-*` attribute in HTML.
+
+---
+
+### **2️⃣ How Does `dataset` Work?** 🔍  
+Let's break down how `dataset` is used in the provided code.
+
+#### **📌 Step 1: Event Delegation on Parent Element**
+```js
+document.getElementById('parentElement').addEventListener('click', function (event) {
+    if (event.target.classList.contains('dynamic-btn')) {
+        console.log(`Button ${event.target.dataset.id} clicked!`);
+    }
+});
+```
+🔹 **How it works?**  
+- We attach a **single event listener** to `#parentElement` instead of adding individual event listeners to each button.
+- When a button is clicked, `event.target.dataset.id` fetches the **value of `data-id`** from that button.  
+- **Example:** If a button with `data-id="3"` is clicked, it logs:  
+  ```
+  Button 3 clicked!
+  ```
+
+---
+
+#### **📌 Step 2: Dynamically Creating Buttons with `dataset`**
+```js
+function createButton(id) {
+    let btn = document.createElement('button');  // Create a button
+    btn.textContent = `Click Me ${id}`;  // Set button text
+    btn.classList.add('dynamic-btn');  // Add class for styling & event delegation
+    btn.dataset.id = id;  // Assign unique data-id to the button
+    document.getElementById('parentElement').appendChild(btn);  // Append to parent
+}
+```
+🔹 **How it works?**  
+- We dynamically create a button element.
+- We **set a `data-id` attribute** using `btn.dataset.id = id;`
+- This generates **buttons with custom data** like:
+  ```html
+  <button class="dynamic-btn" data-id="1">Click Me 1</button>
+  <button class="dynamic-btn" data-id="2">Click Me 2</button>
+  ```
+
+---
+
+#### **📌 Step 3: Generating Multiple Buttons**
+```js
+for (let i = 1; i <= 5; i++) {
+    createButton(i);
+}
+```
+🔹 **How it works?**  
+- This loop calls `createButton(i)` **5 times**, dynamically generating buttons **with unique `data-id` values** (`1 to 5`).
+
+---
+
+### **3️⃣ Why Use `dataset` Instead of `id` or `class`?** 🤔  
+✅ **Cleaner HTML** – Avoids unnecessary `id` clutter.  
+✅ **Flexible** – Store multiple attributes (`data-name`, `data-price`, etc.).  
+✅ **Great for Event Delegation** – Instead of attaching events to each button, we use `dataset.id` to handle clicks dynamically.  
+✅ **More Readable & Maintainable** – Keeps JavaScript logic clean.
+
+---
+
+### **4️⃣ Real-World Example of `dataset`** 🌍  
+Here’s another example where `dataset` helps manage **product details dynamically**:
+
+```js
+document.getElementById('productList').addEventListener('click', function (event) {
+    if (event.target.classList.contains('product-btn')) {
+        alert(`Product: ${event.target.dataset.name}, Price: ${event.target.dataset.price}`);
+    }
+});
+
+// Creating products dynamically
+function createProduct(name, price) {
+    let btn = document.createElement('button');
+    btn.textContent = `Buy ${name}`;
+    btn.classList.add('product-btn');
+    btn.dataset.name = name;
+    btn.dataset.price = price;
+    document.getElementById('productList').appendChild(btn);
+}
+
+// Generate product buttons
+createProduct('Laptop', '1000$');
+createProduct('Phone', '500$');
+```
+Now, clicking the **"Buy Laptop"** button will show:  
+```
+Product: Laptop, Price: 1000$
+```
+
+---
+
+### **5️⃣ Summary** 🎯  
+🚀 `dataset` is a **powerful way** to store and access custom attributes (`data-*`) in JavaScript.  
+🎯 It keeps the DOM **clean** and works well with **event delegation**.  
+⚡ It is **better than hardcoding IDs** when handling **dynamic elements**.
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
