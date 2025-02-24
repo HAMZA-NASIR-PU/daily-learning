@@ -3602,6 +3602,8 @@ Product: Laptop, Price: 1000$
 🎯 It keeps the DOM **clean** and works well with **event delegation**.  
 ⚡ It is **better than hardcoding IDs** when handling **dynamic elements**.
 
+## Kubernetes Essestials
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
