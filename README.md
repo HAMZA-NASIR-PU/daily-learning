@@ -3604,6 +3604,10 @@ Product: Laptop, Price: 1000$
 
 ## Kubernetes Essestials
 
+## React use Synthetic Events
+
+https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
