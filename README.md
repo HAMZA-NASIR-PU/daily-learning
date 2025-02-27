@@ -3602,6 +3602,8 @@ Product: Laptop, Price: 1000$
 🎯 It keeps the DOM **clean** and works well with **event delegation**.  
 ⚡ It is **better than hardcoding IDs** when handling **dynamic elements**.
 
+## Continuous Integration vs Continuous Delivery
+
 ## Kubernetes Essestials
 
 ## React use Synthetic Events
