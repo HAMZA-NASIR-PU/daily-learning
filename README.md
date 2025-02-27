@@ -3604,6 +3604,21 @@ Product: Laptop, Price: 1000$
 
 ## Continuous Integration vs Continuous Delivery
 
+## Bitbucket Pipelines Notes
+https://support.atlassian.com/bitbucket-cloud/docs/java-with-bitbucket-pipelines/
+
+Bitbucket Pipelines runs all your builds in Docker containers using an image that you specify at the beginning of your configuration file. You can easily use Maven with Bitbucket Pipelines by using one of the official Maven Docker images on Docker Hub.
+
+For instance, you can use Maven 3.3.9 (current version as of writing) by specifying it at the beginning of your bitbucket-pipelines.yml file.
+
+```yml
+image: maven:3.3.9
+pipelines:
+  default:
+    - step:
+        script:
+          - mvn -version
+```
 ## Kubernetes Essestials
 
 ## React use Synthetic Events
