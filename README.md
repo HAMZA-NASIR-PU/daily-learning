@@ -3619,6 +3619,12 @@ pipelines:
         script:
           - mvn -version
 ```
+## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
+https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
+
+## What is HEAD in Git ?
+https://graphite.dev/guides/git-head
+
 ## Kubernetes Essestials
 
 ## React use Synthetic Events
