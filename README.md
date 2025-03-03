@@ -3619,6 +3619,122 @@ pipelines:
         script:
           - mvn -version
 ```
+
+## **📌 Approximate Match Task (Grades System) using VLOOKUP formula in Excel 365**
+
+This is a practical task that tests your understanding of **VLOOKUP with an approximate match**.
+
+### **Task Instructions**  
+You need to create a **student grading system** where:  
+1. Students receive a **letter grade** based on their exam scores.  
+2. The lookup table defines grade boundaries.  
+3. Use **VLOOKUP with an approximate match** to assign the correct grade.  
+
+### **Step 1: Create a Lookup Table**  
+In **Excel**, create the following table (e.g., in range `F2:G6`):  
+
+| Score | Grade |
+|--------|-------|
+| 90     | A     |
+| 80     | B     |
+| 70     | C     |
+| 60     | D     |
+| 50     | F     |
+
+This means:  
+- **90+** gets an **A**  
+- **80-89** gets a **B**  
+- **70-79** gets a **C**, etc.  
+
+### **Step 2: Create a Student Score Table**  
+In **A2:B7**, enter student data:  
+
+| Student  | Score |
+|----------|-------|
+| Alex     | 85    |
+| Brian    | 72    |
+| Charlie  | 91    |
+| David    | 60    |
+| Emma     | 55    |
+
+### **Step 3: Apply VLOOKUP Formula**  
+In **C2**, enter the following formula to find the grade for each student:  
+```excel
+=VLOOKUP(B2, $F$2:$G$6, 2, TRUE)
+```
+Then, drag the formula down to fill the column.
+
+### **Explanation:**  
+- `B2` → The score to look up.  
+- `$F$2:$G$6` → The range where we search for the score.  
+- `2` → The **column index** to return (Grade column).  
+- `TRUE` → Enables **approximate match**, meaning it finds the closest lower value.  
+
+### **Expected Output:**
+| Student  | Score | Grade |
+|----------|-------|-------|
+| Alex     | 85    | B     |
+| Brian    | 72    | C     |
+| Charlie  | 91    | A     |
+| David    | 60    | D     |
+| Emma     | 55    | F     |
+
+---
+### **Bonus Challenges 🚀**
+1. **Modify the formula** to handle errors using `IFERROR`.  
+2. **Use conditional formatting** to highlight A-grade students.  
+3. **Extend the grading table** to include **A+, A-, B+, B-**, etc.
+
+## **📌 Overcoming the `#N/A` Error in Approximate Match VLOOKUP**
+When using **VLOOKUP with approximate match (`TRUE`)**, you may get a `#N/A` error if:  
+1. The lookup value is **smaller than the smallest value** in the table.  
+2. The lookup column is **not sorted in ascending order** (though approximate match requires sorting).  
+
+To handle this gracefully, you can use the `IFERROR` or `IFNA` functions.
+
+---
+
+### **Solution 1: Use `IFERROR` to Replace `#N/A`**
+Modify the VLOOKUP formula as follows:
+```excel
+=IFERROR(VLOOKUP(B2, $F$2:$G$6, 2, TRUE), "No Grade")
+```
+✔️ If `VLOOKUP` fails (returns `#N/A`), it will display `"No Grade"` instead of an error.  
+
+---
+
+### **Solution 2: Use `IFNA` (Better for `#N/A` Only)**
+Unlike `IFERROR`, which catches all errors, `IFNA` **only handles `#N/A` errors** (useful if you want to debug other errors separately).
+```excel
+=IFNA(VLOOKUP(B2, $F$2:$G$6, 2, TRUE), "No Grade")
+```
+✔️ Works the same as `IFERROR` but is more specific.
+
+---
+
+### **Example with Error Handling**
+| Student  | Score | VLOOKUP Formula | Output |
+|----------|-------|----------------|--------|
+| Alex     | 85    | Finds 80 → B    | B      |
+| Brian    | 72    | Finds 70 → C    | C      |
+| Charlie  | 91    | Finds 90 → A    | A      |
+| David    | 60    | Finds 60 → D    | D      |
+| Emma     | 55    | Finds 50 → F    | F      |
+| John     | 45    | No match → `#N/A` → `"No Grade"` | No Grade |
+
+---
+
+### **Bonus Challenge 🚀**
+Instead of showing `"No Grade"`, you can customize the message:
+```excel
+=IFERROR(VLOOKUP(B2, $F$2:$G$6, 2, TRUE), "Below F Grade")
+```
+This will display **"Below F Grade"** instead of `#N/A`.
+
+---
+
+Now your grading system is **error-proof**!  😊
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
