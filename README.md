@@ -3967,6 +3967,105 @@ JavaScript provides this symbol to allow objects to customize or define how they
 
 This is the core concept behind iterable objects in JavaScript!
 
+---
+
+## **📌 Does spread operator only works on `Symbol.iterator` in Javascript ?**
+
+Yes, the **spread operator (`...`)** in JavaScript only works on objects that are **iterable**, which means the object must have a `Symbol.iterator` method implemented. This includes built-in iterables like arrays, strings, sets, maps, and any custom object that implements the `Symbol.iterator` method.
+
+### Key Concept: **Iterable Protocol**
+
+- **Iterables**: An object is considered iterable if it implements the **iterator protocol**, specifically by having a `Symbol.iterator` method.
+- When the spread operator is used on an object, it internally calls the `Symbol.iterator` method to get an iterator that yields values from the object.
+- The spread operator works by consuming the values from the iterator one by one and placing them into a new array or function call, depending on the usage.
+
+### Example 1: Arrays (Iterable)
+```javascript
+const arr = [1, 2, 3];
+const spreadArray = [...arr];
+console.log(spreadArray); // [1, 2, 3]
+```
+Arrays have a built-in `Symbol.iterator` method, so they can be spread.
+
+### Example 2: Strings (Iterable)
+```javascript
+const str = "hello";
+const spreadStr = [...str];
+console.log(spreadStr); // ['h', 'e', 'l', 'l', 'o']
+```
+Strings are iterable, and the spread operator works by iterating over the characters in the string.
+
+### Example 3: Sets and Maps (Iterable)
+```javascript
+const set = new Set([1, 2, 3]);
+const spreadSet = [...set];
+console.log(spreadSet); // [1, 2, 3]
+
+const map = new Map([['a', 1], ['b', 2]]);
+const spreadMap = [...map];
+console.log(spreadMap); // [['a', 1], ['b', 2]]
+```
+Both sets and maps have `Symbol.iterator`, so they can be spread.
+
+### Example 4: Custom Iterable Object
+You can define custom objects that are iterable by implementing the `Symbol.iterator` method. Only then will the spread operator work on them.
+
+```javascript
+const customIterable = {
+  *[Symbol.iterator]() { // Using a generator function to implement iterator
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+};
+
+const spreadCustom = [...customIterable];
+console.log(spreadCustom); // [1, 2, 3]
+```
+
+### Non-iterable Objects (Without `Symbol.iterator`):
+
+If an object does **not** have a `Symbol.iterator` method, the spread operator will not work on it. For example, plain objects do not have a default `Symbol.iterator`:
+
+```javascript
+const obj = { a: 1, b: 2, c: 3 };
+const spreadObj = [...obj]; // This will throw an error: TypeError: obj is not iterable
+```
+
+To make this object iterable and allow the spread operator, you would have to define a `Symbol.iterator` method on it:
+
+```javascript
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  [Symbol.iterator]() {
+    const entries = Object.entries(this);
+    let index = 0;
+    return {
+      next() {
+        if (index < entries.length) {
+          return { value: entries[index++], done: false };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  }
+};
+
+const spreadObj = [...obj];
+console.log(spreadObj); // [['a', 1], ['b', 2], ['c', 3]]
+```
+
+### Summary:
+
+- The spread operator (`...`) only works on objects that implement the **iterator protocol**, meaning they must have a `Symbol.iterator` method.
+- Built-in iterables like arrays, strings, sets, and maps can be spread because they have `Symbol.iterator`.
+- Plain objects are **not iterable** by default, and the spread operator will throw an error if used on them unless you explicitly define a `Symbol.iterator` method.
+
+---
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
