@@ -3735,6 +3735,74 @@ This will display **"Below F Grade"** instead of `#N/A`.
 
 Now your grading system is **error-proof**!  😊
 
+---
+
+## **📌 What is `Symbol.iterator` in Javascript ?**
+
+In JavaScript, the `for...of` loop works with any object that is **iterable**. An object is considered iterable if it implements the **iterable protocol**, which means it has a method with the key `Symbol.iterator`. This method should return an iterator, which is an object with a `next` method that returns an object with two properties: `value` (the next value) and `done` (a boolean indicating if the iteration is complete).
+
+Here are the common objects on which `for...of` will work:
+
+1. **Arrays**
+   ```javascript
+   const arr = [1, 2, 3];
+   for (const value of arr) {
+     console.log(value);
+   }
+   ```
+   
+2. **Strings**
+   ```javascript
+   const str = "hello";
+   for (const char of str) {
+     console.log(char);
+   }
+   ```
+
+3. **Maps**
+   ```javascript
+   const map = new Map([['a', 1], ['b', 2]]);
+   for (const [key, value] of map) {
+     console.log(key, value);
+   }
+   ```
+
+4. **Sets**
+   ```javascript
+   const set = new Set([1, 2, 3]);
+   for (const value of set) {
+     console.log(value);
+   }
+   ```
+
+5. **Typed Arrays** (like `Uint8Array`, `Float32Array`, etc.)
+   ```javascript
+   const typedArray = new Uint8Array([10, 20, 30]);
+   for (const value of typedArray) {
+     console.log(value);
+   }
+   ```
+
+6. **Arguments object**
+   ```javascript
+   function foo() {
+     for (const arg of arguments) {
+       console.log(arg);
+     }
+   }
+   foo(1, 2, 3);
+   ```
+
+7. **DOM NodeList** (e.g., result of `document.querySelectorAll`)
+   ```javascript
+   const nodes = document.querySelectorAll('div');
+   for (const node of nodes) {
+     console.log(node);
+   }
+   ```
+
+**Note:** The `for...of` loop does **not** work on plain objects (`{}`) unless you define an iterator. Plain objects are not iterable by default, but you can make them iterable by implementing the `Symbol.iterator` method.
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
