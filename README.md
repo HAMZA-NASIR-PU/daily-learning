@@ -3867,6 +3867,106 @@ city: Wonderland
 
 With this implementation, you can now use the `for...of` loop on the plain `person` object as if it were an iterable like an array!
 
+---
+
+## **📌 What is `Symbol.iterator` itself in Javascript ?**
+
+When an interviewer asks **"What is `Symbol.iterator`?"**, they are asking about the concept of the **iterator protocol** and the **`Symbol.iterator`** in JavaScript.
+
+### What is `Symbol.iterator`?
+
+`Symbol.iterator` is a **built-in symbol** in JavaScript that is used to define the **default iterator** for an object. It is part of the **iterator protocol** and enables objects to be iterated over, such as in a `for...of` loop.
+
+More specifically, `Symbol.iterator` is a **symbol key** that corresponds to a function that returns an **iterator** object. This iterator object defines how the object should be iterated.
+
+### Iterator Protocol
+
+The **iterator protocol** is a standard in JavaScript that governs how an object should behave when it is iterated over. For an object to be **iterable** (meaning you can use it in a `for...of` loop or with other iterable-consumer methods like `Array.from` or the spread operator `...`), it needs to implement this protocol.
+
+### How does it work?
+
+An object is considered **iterable** if it has a property with the key `Symbol.iterator`. This property must be a function that returns an **iterator object**. This iterator object should have a `next()` method that returns an object with two properties:
+- `value`: The next value in the iteration.
+- `done`: A boolean that indicates whether the iteration is complete.
+
+### Example Explanation:
+
+```javascript
+// Example of Symbol.iterator implementation
+
+const iterableObject = {
+  // Property using the Symbol.iterator key
+  [Symbol.iterator]() {
+    let count = 0;
+    return {
+      next() {
+        count++;
+        if (count <= 5) {
+          return { value: count, done: false }; // Returns next value and not done yet
+        } else {
+          return { done: true }; // Marks iteration as complete
+        }
+      }
+    };
+  }
+};
+
+// Using for...of to iterate over the iterableObject
+for (const value of iterableObject) {
+  console.log(value);
+}
+```
+
+### Breakdown:
+
+- **`Symbol.iterator`**: We define a method on the object that uses `Symbol.iterator` as the key. This method returns an **iterator**.
+- **Iterator**: Inside the method, we return an object that implements the `next()` method. This `next()` method controls how the object is iterated, yielding a `value` and a `done` flag.
+  - **`value`**: This is the current value yielded by the iterator (in this case, numbers 1 to 5).
+  - **`done`**: A boolean flag that tells whether the iteration is finished (`done: true`).
+
+### What Does `Symbol.iterator` Do?
+
+- It defines the behavior for iterating over an object.
+- It is invoked automatically when using constructs like `for...of`, spread operator (`...`), and iterable helper methods like `Array.from()`, `Promise.all()`, etc.
+  
+If an object has a `Symbol.iterator` method, you can use it in a `for...of` loop because the method returns an iterator that follows the iterator protocol.
+
+### Built-in Iterables:
+
+Many JavaScript objects already have a built-in `Symbol.iterator` method, making them iterable by default:
+- **Arrays**:
+  ```javascript
+  const arr = [1, 2, 3];
+  for (const value of arr) {
+    console.log(value); // 1, 2, 3
+  }
+  ```
+- **Strings**:
+  ```javascript
+  const str = "hello";
+  for (const char of str) {
+    console.log(char); // 'h', 'e', 'l', 'l', 'o'
+  }
+  ```
+- **Maps** and **Sets**:
+  ```javascript
+  const map = new Map([['key1', 'value1'], ['key2', 'value2']]);
+  for (const [key, value] of map) {
+    console.log(key, value); // key1 value1, key2 value2
+  }
+  ```
+
+### How `Symbol.iterator` Fits into JavaScript?
+
+JavaScript provides this symbol to allow objects to customize or define how they are iterated. For example, you can make custom data structures like linked lists or trees iterable by implementing the `Symbol.iterator` method. It's what powers loops like `for...of` and helps convert objects into arrays using `Array.from`.
+
+### In Summary:
+- `Symbol.iterator` is a built-in symbol that defines the iterator for an object.
+- It allows objects to be used in `for...of` loops, spread syntax, and other iterable-related features.
+- The method assigned to `Symbol.iterator` should return an **iterator** object that follows the **iterator protocol** (with a `next()` method that yields values and tracks completion via `done`).
+
+This is the core concept behind iterable objects in JavaScript!
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
