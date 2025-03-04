@@ -3803,6 +3803,70 @@ Here are the common objects on which `for...of` will work:
 
 **Note:** The `for...of` loop does **not** work on plain objects (`{}`) unless you define an iterator. Plain objects are not iterable by default, but you can make them iterable by implementing the `Symbol.iterator` method.
 
+## **📌 How to make plain objects iterable in Javascript ?**
+
+To make plain JavaScript objects (`{}`) iterable using the `for...of` loop, you need to implement the **iterator protocol**. This involves adding a method to the object using the special symbol `Symbol.iterator`. This method should return an iterator object, which in turn should have a `next()` method that returns objects with the properties `value` and `done`.
+
+Here’s a step-by-step explanation and example:
+
+### Steps to Make a Plain Object Iterable:
+
+1. **Add `Symbol.iterator` Method**: The object must have a method keyed by `Symbol.iterator` that returns an iterator object.
+
+2. **Create an Iterator Object**: The iterator object should have a `next()` method that returns the next value in the iteration, and a `done` flag indicating whether the iteration is complete.
+
+### Example:
+Let’s make a plain object iterable by iterating over its key-value pairs.
+
+```javascript
+const person = {
+  name: "Alice",
+  age: 25,
+  city: "Wonderland",
+  
+  // Implementing Symbol.iterator
+  [Symbol.iterator]() {
+    // Step 1: Get entries (key-value pairs) of the object as an array
+    const entries = Object.entries(this); // [['name', 'Alice'], ['age', 25], ['city', 'Wonderland']]
+    
+    let index = 0;
+    
+    // Step 2: Return an iterator object with a next() method
+    return {
+      next() {
+        if (index < entries.length) {
+          // Step 3: Return the current entry as the value, and increment the index
+          return { value: entries[index++], done: false };
+        } else {
+          // Step 4: Indicate the iteration is complete
+          return { done: true };
+        }
+      }
+    };
+  }
+};
+
+// Now you can use for...of on the plain object
+for (const [key, value] of person) {
+  console.log(`${key}: ${value}`);
+}
+```
+
+### Explanation:
+- The `person` object is a plain object with properties (`name`, `age`, `city`).
+- We define a method using `Symbol.iterator`. Inside this method, we first create an array of key-value pairs using `Object.entries(this)`.
+- We return an object with a `next()` method that controls the iteration. The `next()` method increments the index and returns the current entry until all key-value pairs have been iterated over.
+- The `done` flag indicates whether all entries have been returned.
+
+### Output:
+```
+name: Alice
+age: 25
+city: Wonderland
+```
+
+With this implementation, you can now use the `for...of` loop on the plain `person` object as if it were an iterable like an array!
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
