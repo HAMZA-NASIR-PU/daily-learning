@@ -4070,6 +4070,10 @@ console.log(spreadObj); // [['a', 1], ['b', 2], ['c', 3]]
 
 https://medium.com/codex/learn-about-the-difference-between-iterate-and-enumerate-in-javascript-using-for-loops-40a42dec576f
 
+## Deep copy and shallow copy in case of spread operator in javascript
+
+https://stackoverflow.com/questions/63971976/spread-operator-does-not-seem-to-copy-full-object
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
