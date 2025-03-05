@@ -4066,7 +4066,9 @@ console.log(spreadObj); // [['a', 1], ['b', 2], ['c', 3]]
 
 ---
 
-## Practice of JS and Bootstrap using FIlter-on-paginated-data code.
+## Difference between iterable and enumerable
+
+https://medium.com/codex/learn-about-the-difference-between-iterate-and-enumerate-in-javascript-using-for-loops-40a42dec576f
 
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
