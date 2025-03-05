@@ -4066,6 +4066,8 @@ console.log(spreadObj); // [['a', 1], ['b', 2], ['c', 3]]
 
 ---
 
+## Practice of JS and Bootstrap using FIlter-on-paginated-data code.
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
