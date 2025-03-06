@@ -4103,3 +4103,4 @@ https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
 
+Multithreaded Javascript: Concurrency Beyond the Event Loop by Bryan English and Thomas Hunter 
