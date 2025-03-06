@@ -4077,6 +4077,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_owners
 ## Deep copy and shallow copy in case of spread operator in javascript
 
 https://stackoverflow.com/questions/63971976/spread-operator-does-not-seem-to-copy-full-object
+https://stackoverflow.com/questions/72209243/does-spread-syntax-create-a-shallow-copy-or-a-deep-copy
+https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
+https://stackoverflow.com/questions/40488190/how-is-structured-clone-algorithm-different-from-deep-copy
 
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
