@@ -4070,6 +4070,10 @@ console.log(spreadObj); // [['a', 1], ['b', 2], ['c', 3]]
 
 https://medium.com/codex/learn-about-the-difference-between-iterate-and-enumerate-in-javascript-using-for-loops-40a42dec576f
 
+## Enumerability and ownership of properties
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties
+
 ## Deep copy and shallow copy in case of spread operator in javascript
 
 https://stackoverflow.com/questions/63971976/spread-operator-does-not-seem-to-copy-full-object
