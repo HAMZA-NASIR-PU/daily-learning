@@ -4144,6 +4144,7 @@ https://medium.com/@techworldwithmilan/how-does-single-sign-on-sso-work-31ffa1af
 https://medium.com/@techworldwithmilan
 https://medium.com/@techworldwithmilan/computer-science-papers-every-developer-should-read-1a8191975798
 https://medium.com/@techworldwithmilan/how-does-oauth-2-0-work-bea67a760aa5
+https://newsletter.techworld-with-milan.com/p/computer-science-papers-every-developer
 
 ## Crucial Udemy Courses to learn in future:
 
