@@ -4138,6 +4138,13 @@ https://graphite.dev/guides/git-head
 
 https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
 
+## Best Articles
+
+https://medium.com/@techworldwithmilan/how-does-single-sign-on-sso-work-31ffa1afcc63
+https://medium.com/@techworldwithmilan
+https://medium.com/@techworldwithmilan/computer-science-papers-every-developer-should-read-1a8191975798
+https://medium.com/@techworldwithmilan/how-does-oauth-2-0-work-bea67a760aa5
+
 ## Crucial Udemy Courses to learn in future:
 
 - https://www.udemy.com/course/functional-programming-and-reactive-programming-in-java
