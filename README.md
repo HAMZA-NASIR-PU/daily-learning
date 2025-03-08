@@ -4082,6 +4082,50 @@ https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
 https://stackoverflow.com/questions/40488190/how-is-structured-clone-algorithm-different-from-deep-copy
 
+## ** 📌 Difference Between `e.target` and `e.currentTarget` in JavaScript **
+
+When handling events in JavaScript, both `e.target` and `e.currentTarget` are used to refer to elements involved in the event. However, they serve different purposes:
+
+1. **`e.target` (Event Target)**
+   - Refers to the actual element that triggered the event.
+   - It can be a child element of the element where the event listener is attached.
+   - Useful when dealing with event delegation.
+
+2. **`e.currentTarget` (Event Current Target)**
+   - Refers to the element on which the event listener is attached.
+   - It remains constant regardless of where the event originates.
+
+---
+
+### Example:
+
+```javascript
+document.getElementById("parent").addEventListener("click", function (e) {
+    console.log("e.target:", e.target);        // The exact element that was clicked
+    console.log("e.currentTarget:", e.currentTarget); // The element with the event listener
+});
+```
+
+#### HTML:
+```html
+<div id="parent" style="border: 2px solid black; padding: 20px;">
+    <button id="child">Click Me</button>
+</div>
+```
+
+#### Scenario:
+- If you click on the `<button>` inside `<div id="parent">`, `e.target` will be the `<button>`, whereas `e.currentTarget` will be the `<div id="parent">`.
+
+---
+
+### Key Takeaways:
+| Property         | Refers To |
+|-----------------|----------|
+| `e.target`      | The element that triggered the event |
+| `e.currentTarget` | The element that has the event listener attached |
+
+Use `e.target` when you need to know which child element triggered the event, and use `e.currentTarget` when you need to reference the element where the event is bound.
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
