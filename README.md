@@ -4130,6 +4130,10 @@ Use `e.target` when you need to know which child element triggered the event, an
 
 https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
 
+## ** 📌 Shadowing static methods in Java **
+
+https://stackoverflow.com/questions/32118306/shadowing-static-method
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
