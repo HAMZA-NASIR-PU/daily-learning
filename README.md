@@ -4126,6 +4126,10 @@ document.getElementById("parent").addEventListener("click", function (e) {
 
 Use `e.target` when you need to know which child element triggered the event, and use `e.currentTarget` when you need to reference the element where the event is bound.
 
+## ** 📌 Authentication & Authorization explained Explained by Microsoft Identity Plaform **
+
+https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
+
 ## What is the difference between `git checkout HEAD` and `git checkout <current_commit>`?
 https://stackoverflow.com/questions/73234676/what-is-the-difference-between-git-checkout-head-and-git-checkout-current-co
 
