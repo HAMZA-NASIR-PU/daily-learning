@@ -4126,16 +4126,19 @@ document.getElementById("parent").addEventListener("click", function (e) {
 
 Use `e.target` when you need to know which child element triggered the event, and use `e.currentTarget` when you need to reference the element where the event is bound.
 
-## ** 📌 Authentication & Authorization explained Explained by Microsoft Identity Plaform **
+## **📌 My Observations regarding Jackson (Serialization/Deserialization) Library in Spring Boot **
+- When deserialization takes place, jackson calls the setter methods of that object and when serialization takes place, then the getter methods will be called.
+
+## **📌 Authentication & Authorization explained Explained by Microsoft Identity Plaform**
 
 https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
 
-## ** 📌 Canary Deployment **
+## **📌 Canary Deployment**
 
 https://www.youtube.com/watch?v=nnseeKxovaM&list=LL&index=9
 
 
-## ** 📌 Shadowing static methods in Java **
+## **📌 Shadowing static methods in Java**
 
 https://stackoverflow.com/questions/32118306/shadowing-static-method
 
