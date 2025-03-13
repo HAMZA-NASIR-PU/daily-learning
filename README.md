@@ -4130,6 +4130,11 @@ Use `e.target` when you need to know which child element triggered the event, an
 
 https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
 
+## ** 📌 Canary Deployment **
+
+https://www.youtube.com/watch?v=nnseeKxovaM&list=LL&index=9
+
+
 ## ** 📌 Shadowing static methods in Java **
 
 https://stackoverflow.com/questions/32118306/shadowing-static-method
