@@ -4082,7 +4082,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
 https://stackoverflow.com/questions/40488190/how-is-structured-clone-algorithm-different-from-deep-copy
 
-## ** 📌 Difference Between `e.target` and `e.currentTarget` in JavaScript **
+## **📌 Difference Between `e.target` and `e.currentTarget` in JavaScript**
 
 When handling events in JavaScript, both `e.target` and `e.currentTarget` are used to refer to elements involved in the event. However, they serve different purposes:
 
@@ -4125,6 +4125,8 @@ document.getElementById("parent").addEventListener("click", function (e) {
 | `e.currentTarget` | The element that has the event listener attached |
 
 Use `e.target` when you need to know which child element triggered the event, and use `e.currentTarget` when you need to reference the element where the event is bound.
+
+## **📌 Design Patterns in Distributed Systems**
 
 ## **📌 My Observations regarding Jackson (Serialization/Deserialization) Library in Spring Boot **
 - When deserialization takes place, jackson calls the setter methods of that object and when serialization takes place, then the getter methods will be called.
