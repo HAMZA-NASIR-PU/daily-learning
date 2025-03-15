@@ -4172,5 +4172,5 @@ https://newsletter.techworld-with-milan.com/p/computer-science-papers-every-deve
 
 ## Derivation of Area of Triangle
 https://wumbo.net/examples/derive-area-of-triangle-formula/
-
+- Practice of Creating Filter on paginated data feature.
 Multithreaded Javascript: Concurrency Beyond the Event Loop by Bryan English and Thomas Hunter 
