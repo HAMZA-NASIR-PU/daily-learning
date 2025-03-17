@@ -4126,6 +4126,10 @@ document.getElementById("parent").addEventListener("click", function (e) {
 
 Use `e.target` when you need to know which child element triggered the event, and use `e.currentTarget` when you need to reference the element where the event is bound.
 
+## **📌 `transient` keyword in Java**
+
+The transient keyword in Java is used to indicate that a particular field of a class should not be serialized. Serialization is the process of converting an object's state into a byte stream, which can then be reverted back into a copy of the object. Fields marked as transient are skipped during this process. This is alos very useful in case of Jackson
+
 ## **📌 Design Patterns in Distributed Systems**
 
 ## **📌 My Observations regarding Jackson (Serialization/Deserialization) Library in Spring Boot **
