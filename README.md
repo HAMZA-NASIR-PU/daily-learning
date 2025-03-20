@@ -4156,6 +4156,36 @@ https://graphite.dev/guides/git-head
 
 ## Kubernetes Essestials
 
+**Date: 2025-03-20**  
+
+The basic purpose of **Kubernetes** is to automate the deployment, scaling, and management of containerized applications. It provides a framework for running distributed systems resiliently, making it easier to manage applications at scale.  
+
+### **Key Purposes of Kubernetes:**  
+1. **Container Orchestration** – Manages containers (Docker or others) across multiple hosts.  
+2. **Automated Scaling** – Adjusts the number of running containers based on demand.  
+3. **Load Balancing** – Distributes traffic across multiple instances of an application.  
+4. **Self-Healing** – Restarts failed containers and replaces unhealthy ones.  
+5. **Service Discovery** – Provides networking solutions so containers can communicate seamlessly.  
+6. **Automated Rollouts & Rollbacks** – Manages application updates without downtime.  
+7. **Storage Orchestration** – Manages storage solutions dynamically for containerized apps.  
+
+### High-Level Understanding of Kubernetes
+Before jumping into hands-on practice, ensure you understand these core concepts:
+
+- Pods: The smallest deployable unit in Kubernetes, usually containing one or more containers.
+- Nodes: Machines (VMs or physical) where Kubernetes schedules workloads.
+- Cluster: A group of nodes managed by Kubernetes.
+- Deployments: Used to define how applications should be deployed and updated.
+- Services: Expose applications running in pods to other services or the outside world.
+- ConfigMaps & Secrets: Store configuration and sensitive data separately from code.
+
+### 1. Kubectl
+`kubectl` is the command-line tool for interacting with the Kubernetes API, allowing you to deploy applications, inspect and manage cluster resources, and view logs. It's the primary way to communicate with and control your Kubernetes clusters.
+
+### 2. Kubeadm
+`Kubeadm` is a Kubernetes tool that simplifies the process of bootstrapping and setting up a Kubernetes cluster. It automates the installation and configuration of the control plane and worker nodes, making it a preferred tool for setting up production-ready Kubernetes clusters.
+ 
+
 ## React use Synthetic Events
 
 https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
