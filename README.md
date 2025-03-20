@@ -4226,6 +4226,8 @@ Ingress needs an **Ingress Controller**, which is a pod that processes ingress r
 
 ---
 
+Kubernetes Documentation Tutorial => https://kubernetes.io/docs/tutorials/kubernetes-basics/
+
 ## React use Synthetic Events
 
 https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
