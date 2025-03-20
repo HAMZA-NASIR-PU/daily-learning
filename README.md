@@ -4184,7 +4184,47 @@ Before jumping into hands-on practice, ensure you understand these core concepts
 
 ### 2. Kubeadm
 `Kubeadm` is a Kubernetes tool that simplifies the process of bootstrapping and setting up a Kubernetes cluster. It automates the installation and configuration of the control plane and worker nodes, making it a preferred tool for setting up production-ready Kubernetes clusters.
- 
+
+---
+
+### **What is Ingress in Kubernetes?**  
+**Ingress** in Kubernetes is a resource that manages **external access to services inside a cluster**, typically via **HTTP and HTTPS**. It provides a way to expose **multiple services** using a **single external IP**, handling routing, SSL termination, and load balancing.  
+
+### **Why Use Ingress?**
+1. **Single Entry Point** – Instead of exposing each service with `NodePort` or `LoadBalancer`, Ingress routes traffic efficiently.  
+2. **Path-Based Routing** – Direct traffic to different services based on URL paths.  
+3. **Host-Based Routing** – Route traffic to services based on domain names (e.g., `api.example.com` → API service, `web.example.com` → frontend).  
+4. **SSL/TLS Termination** – Offloads SSL encryption, improving performance.  
+5. **Security & Access Control** – Protects services using authentication and rate limiting.  
+
+---
+
+### **How Ingress Works**  
+Ingress needs an **Ingress Controller**, which is a pod that processes ingress rules and routes traffic. Common Ingress Controllers:  
+- **NGINX Ingress Controller** (most popular)  
+- **Traefik**  
+- **HAProxy**  
+- **Istio Ingress Gateway**  
+
+---
+
+### **NodePort vs LoadBalancer in Kubernetes**  
+
+#### **1️⃣ NodePort**  
+- Exposes a service on a **static port (30000–32767)** on each node’s IP.  
+- Accessible using `NodeIP:NodePort` from outside the cluster.  
+- Simple but not ideal for production because it requires manual IP management.  
+
+#### **2️⃣ LoadBalancer**  
+- Creates an **external load balancer** (usually from a cloud provider like AWS, GCP, or Azure).  
+- Distributes traffic automatically across nodes and services.  
+- Ideal for production as it provides an externally accessible **IP address**.  
+
+**Key Difference:**  
+- **NodePort** exposes services using each node’s IP and a fixed port.  
+- **LoadBalancer** provides a cloud-managed external IP for easy access.
+
+---
 
 ## React use Synthetic Events
 
