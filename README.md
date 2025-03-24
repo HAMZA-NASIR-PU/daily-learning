@@ -4263,6 +4263,10 @@ Ingress needs an **Ingress Controller**, which is a pod that processes ingress r
 
 Kubernetes Documentation Tutorial => https://kubernetes.io/docs/tutorials/kubernetes-basics/
 
+## Important point related to `forEach` iterative method in Javascript
+
+You cannot use the `break` statement inside a `forEach` loop in JavaScript. The `forEach` method executes a function on each element of an array but does not provide a way to break out of the loop early. If you try to use `break` inside a `forEach`, it will result in an error.
+
 ## React use Synthetic Events
 
 https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
