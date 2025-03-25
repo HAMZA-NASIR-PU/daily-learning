@@ -4263,6 +4263,32 @@ Ingress needs an **Ingress Controller**, which is a pod that processes ingress r
 
 Kubernetes Documentation Tutorial => https://kubernetes.io/docs/tutorials/kubernetes-basics/
 
+## Property `spring.jpa.hibernate.ddl-auto` in Spring Data JPA Framework.
+
+In Spring Boot, the property `spring.jpa.hibernate.ddl-auto` is used by the **`HibernateJpaAutoConfiguration`** class. This class is part of Spring Boot's auto-configuration mechanism and is responsible for configuring the JPA (Java Persistence API) with Hibernate as the provider. It leverages this property to manage how the schema generation (DDL – Data Definition Language) is handled.
+
+This property is passed to Hibernate's configuration, which internally uses the following property:
+
+```java
+hibernate.hbm2ddl.auto
+```
+
+This configuration tells Hibernate how to manage the database schema:
+
+- `none` – No action will be performed.
+- `validate` – Hibernate will validate the schema against the database but will make no changes.
+- `update` – Hibernate will modify the schema to match the entities.
+- `create` – Hibernate will create the schema, destroying any previous data.
+- `create-drop` – Hibernate will create the schema and drop it when the session ends.
+
+This property is usually declared in the `application.properties` or `application.yml` file.
+
+For example:
+
+```properties
+spring.jpa.hibernate.ddl-auto=update
+```
+
 ## Important point related to `forEach` iterative method in Javascript
 
 You cannot use the `break` statement inside a `forEach` loop in JavaScript. The `forEach` method executes a function on each element of an array but does not provide a way to break out of the loop early. If you try to use `break` inside a `forEach`, it will result in an error.
