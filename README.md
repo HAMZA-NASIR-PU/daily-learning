@@ -4289,6 +4289,61 @@ For example:
 spring.jpa.hibernate.ddl-auto=update
 ```
 
+## 🤔 Unable to see the specific Java program running on windows machine using `tasklist` command in cmd during working with Apache Directory Server
+
+Apache Directory Server (like many Java-based tools) doesn't run as a standalone `.exe` file. Instead, it's just **Java code** executed by the Java Virtual Machine (JVM). So, when you start ApacheDS, what really happens is:
+
+- **The JVM (`java.exe` or `javaw.exe`)** is launched.
+- That JVM loads and runs ApacheDS from a `.jar` file or a main class.
+- Windows only sees that **a Java process is running**, not which Java application is running inside it.
+
+That's why you see `java.exe` and `javaw.exe` in the `tasklist` — because that's literally the executable that runs the server.
+
+---
+
+### 🧠 Think of It Like This:
+It’s kind of like:
+> You see a car driving, but you can’t tell from the outside if it's an Uber, pizza delivery, or someone's personal ride — unless you look inside.
+
+Same with Java processes: you see the `java.exe`, but you need to **peek inside** to see what it's running.
+
+---
+
+### ✅ How to See What's Running Inside the JVM
+
+To know that a Java process is actually running Apache Directory Server, you need to inspect the **command line** or **JVM arguments**. For example:
+
+#### Try this in PowerShell:
+```powershell
+Get-CimInstance Win32_Process | Where-Object { $_.Name -like "java*" } | Select-Object ProcessId, CommandLine
+```
+
+OR 
+
+```powershell
+Get-CimInstance Win32_Process | Where-Object { $_.Name -like "java*" } | Select-Object ProcessId, @{Name="CommandLine";Expression={$_.CommandLine}} | Format-List
+```
+That will list **all running Java processes** along with the command they were started with — and there you’ll probably see something like:
+
+```
+java -jar apacheds-service.jar ...
+```
+or
+```
+java -Dapacheds.instance=default -classpath ...
+```
+
+That’s your confirmation that it’s ApacheDS.
+
+---
+
+### 🔧 Extra: ApacheDS Launcher Behavior
+
+- If you started ApacheDS using **Apache Directory Studio**, it often spawns `javaw.exe` in the background.
+- If you started the server as a **Windows service**, it might be under `java.exe`, and still invisible in Task Manager without digging into the command line.
+
+---
+
 ## Important point related to `forEach` iterative method in Javascript
 
 You cannot use the `break` statement inside a `forEach` loop in JavaScript. The `forEach` method executes a function on each element of an array but does not provide a way to break out of the loop early. If you try to use `break` inside a `forEach`, it will result in an error.
