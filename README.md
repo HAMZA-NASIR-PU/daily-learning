@@ -4348,6 +4348,10 @@ That’s your confirmation that it’s ApacheDS.
 
 You cannot use the `break` statement inside a `forEach` loop in JavaScript. The `forEach` method executes a function on each element of an array but does not provide a way to break out of the loop early. If you try to use `break` inside a `forEach`, it will result in an error.
 
+## CQRS Pattern
+
+https://docs.aws.amazon.com/prescriptive-guidance/latest/modernization-data-persistence/cqrs-pattern.html
+
 ## React use Synthetic Events
 
 https://stackoverflow.com/questions/67748671/why-is-onclick-not-shown-in-element
