@@ -4384,3 +4384,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://stackoverflow.com/questions/15077053/filter-table-before-applying-left-join
 - https://learn.microsoft.com/en-us/previous-versions/dotnet/articles/bb425822(v=msdn.10)?redirectedfrom=MSDN
 - https://stackify.com/the-linq-join-operator-a-complete-tutorial/
+- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/into
