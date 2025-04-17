@@ -4378,3 +4378,5 @@ Multithreaded Javascript: Concurrency Beyond the Event Loop by Bryan English and
 ## Making muscle memory of LINQ C# .NET 8
 
 - https://learn.microsoft.com/en-us/dotnet/csharp/linq/standard-query-operators/join-operations
+
+The C# compiler translates LINQ query syntax into equivalent method syntax during compilation. Both query syntax and method syntax achieve the same result and are semantically identical, but query syntax might be more readable for some users, especially those familiar with SQL. 
