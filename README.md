@@ -4386,3 +4386,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://stackify.com/the-linq-join-operator-a-complete-tutorial/
 - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/into
 - https://dotnettutorials.net/lesson/left-outer-join-in-linq/
+- https://learn.microsoft.com/en-us/ef/core/querying/complex-query-operators
