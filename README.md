@@ -4376,3 +4376,5 @@ https://wumbo.net/examples/derive-area-of-triangle-formula/
 Multithreaded Javascript: Concurrency Beyond the Event Loop by Bryan English and Thomas Hunter
 
 ## Making muscle memory of LINQ C# .NET 8
+
+- https://learn.microsoft.com/en-us/dotnet/csharp/linq/standard-query-operators/join-operations
