@@ -4389,3 +4389,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://learn.microsoft.com/en-us/ef/core/querying/complex-query-operators
 - https://stackoverflow.com/questions/8676/entity-framework-vs-linq-to-sql
 - https://learn.microsoft.com/en-us/previous-versions/dotnet/articles/cc161164(v=msdn.10)?redirectedfrom=MSDN
+- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types
