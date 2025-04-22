@@ -4390,3 +4390,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://stackoverflow.com/questions/8676/entity-framework-vs-linq-to-sql
 - https://learn.microsoft.com/en-us/previous-versions/dotnet/articles/cc161164(v=msdn.10)?redirectedfrom=MSDN
 - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types
+- https://stackoverflow.com/questions/15595289/linq-to-entities-join-vs-groupjoin
