@@ -4394,3 +4394,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://learn.microsoft.com/en-us/dotnet/csharp/linq/how-to-build-dynamic-queries
 - https://stackoverflow.com/questions/32259306/atomic-read-and-write-with-entity-framework
 - https://stackoverflow.com/questions/3855881/linq-into-keyword-confusion
+- https://stackoverflow.com/questions/7325278/group-by-in-linq?noredirect=1&lq=1
