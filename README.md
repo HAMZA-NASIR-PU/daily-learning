@@ -4395,3 +4395,4 @@ The C# compiler translates LINQ query syntax into equivalent method syntax durin
 - https://stackoverflow.com/questions/32259306/atomic-read-and-write-with-entity-framework
 - https://stackoverflow.com/questions/3855881/linq-into-keyword-confusion
 - https://stackoverflow.com/questions/7325278/group-by-in-linq?noredirect=1&lq=1
+- https://dotnetfullstackdev.medium.com/dont-ignore-these-4-pillars-roles-claims-policies-requirements-of-authentication-and-48cf70d4cd23#:~:text=Roles%20categorize%20users%20into%20groups,specific%20conditions%20for%20policy%20enforcement.
